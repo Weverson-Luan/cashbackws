@@ -3,16 +3,16 @@
  */
 import React from 'react';
 
-//components
-import {Text} from '../../components/text';
+// components
+import { Text } from '../../components/text';
 
-//assets
+// assets
 
-//typings
+// typings
 
-//styles
-import {Container} from './styles';
-import {useTheme} from 'styled-components';
+// styles
+import { Container } from './styles';
+import { useTheme } from 'styled-components';
 
 const HomeStack = () => {
   const theme = useTheme();
@@ -34,4 +34,4 @@ const HomeStack = () => {
 /**
  * EXPORTS
  */
-export {HomeStack};
+export { HomeStack };
