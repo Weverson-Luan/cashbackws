@@ -11,6 +11,7 @@
       "@components/*": ["src/components/*"],
       "@screens/*": ["src/screens/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@routes/*": ["src/routes/*"],
     }
   }
 }
