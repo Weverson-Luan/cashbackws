@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -197,7 +197,14 @@
 <a name='L132'></a><a href='#L132'>132</a>
 <a name='L133'></a><a href='#L133'>133</a>
 <a name='L134'></a><a href='#L134'>134</a>
-<a name='L135'></a><a href='#L135'>135</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,11 +235,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -337,7 +351,7 @@
 import React from 'react';
 &nbsp;
 // libs
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 &nbsp;
 // components
@@ -362,18 +376,24 @@ import {
     WrapperAppVersion,
 } from './styles';
 &nbsp;
-const Sign = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
-    const { navigate } = <span class="cstat-no" title="statement not covered" >useNavigation();</span>
+interface IProps {
+    onPress?: () =&gt; void;
+}
+const Sign = ({ onPress }: IProps) =&gt; {
+    const theme = useTheme();
+    const { navigate } = useNavigation();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    const handlePress = <span class="fstat-no" title="function not covered" >()</span> =&gt; {};
+&nbsp;
+    return (
         &lt;Container&gt;
             &lt;WrapperLogo&gt;
-                &lt;LogoAppSvg width={150} height={100} /&gt;
+                &lt;LogoAppSvg testID="app-logo" width={150} height={100} /&gt;
             &lt;/WrapperLogo&gt;
 &nbsp;
             &lt;WrapperTitle&gt;
                 &lt;Text
+                    testID="app-title"
                     text="Controle seus
                     Gastos de forma
                     muito simples."
@@ -388,6 +408,7 @@ const Sign = <span class="cstat-no" title="statement not covered" ><span class="
 &nbsp;
             &lt;WrapperDescription&gt;
                 &lt;Text
+                    testID="app-description"
                     text="Faça seu login com
                     uma conta google ou github abaixo"
                     fontFamily="Raleway-Bold"
@@ -403,7 +424,7 @@ const Sign = <span class="cstat-no" title="statement not covered" ><span class="
             &lt;WrapperFooter&gt;
                 &lt;WrapperButton&gt;
                     &lt;Button
-                        testID="button-github"
+                        testID="app-button-google"
                         activeOpacity={0.8}
                         onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate('HomeStack')}</span>
                         width={300}
@@ -425,9 +446,9 @@ const Sign = <span class="cstat-no" title="statement not covered" ><span class="
                     &lt;/Button&gt;
 &nbsp;
                     &lt;Button
-                        testID="button-github"
+                        testID="app-button-github"
                         activeOpacity={0.8}
-                        onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate('HomeStack')}</span>
+                        onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >onPress}</span>
                         width={300}
                         height={55}
                         background_color={theme.colors.neutral_100}
@@ -472,7 +493,7 @@ export { Sign };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-18T19:27:20.418Z
+                at 2022-12-19T04:52:55.320Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
