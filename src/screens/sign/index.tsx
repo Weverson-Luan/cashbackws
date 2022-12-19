@@ -4,7 +4,7 @@
 import React from 'react';
 
 // libs
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 
 // components
@@ -29,18 +29,24 @@ import {
     WrapperAppVersion,
 } from './styles';
 
-const Sign = () => {
+interface IProps {
+    onPress?: () => void;
+}
+const Sign = ({ onPress }: IProps) => {
     const theme = useTheme();
     const { navigate } = useNavigation();
+
+    const handlePress = () => {};
 
     return (
         <Container>
             <WrapperLogo>
-                <LogoAppSvg width={150} height={100} />
+                <LogoAppSvg testID="app-logo" width={150} height={100} />
             </WrapperLogo>
 
             <WrapperTitle>
                 <Text
+                    testID="app-title"
                     text="Controle seus
                     Gastos de forma
                     muito simples."
@@ -55,6 +61,7 @@ const Sign = () => {
 
             <WrapperDescription>
                 <Text
+                    testID="app-description"
                     text="Faça seu login com
                     uma conta google ou github abaixo"
                     fontFamily="Raleway-Bold"
@@ -70,7 +77,7 @@ const Sign = () => {
             <WrapperFooter>
                 <WrapperButton>
                     <Button
-                        testID="button-github"
+                        testID="app-button-google"
                         activeOpacity={0.8}
                         onPress={() => navigate('HomeStack')}
                         width={300}
@@ -92,9 +99,9 @@ const Sign = () => {
                     </Button>
 
                     <Button
-                        testID="button-github"
+                        testID="app-button-github"
                         activeOpacity={0.8}
-                        onPress={() => navigate('HomeStack')}
+                        onPress={() => onPress}
                         width={300}
                         height={55}
                         background_color={theme.colors.neutral_100}
