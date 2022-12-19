@@ -1,8 +1,8 @@
-# App Cashbackws
+# Aplicativo Cashbackws
 
 Aplicativo onde usuário pode estar fazendo o gerenciamento financeiro de seus gasto seja eles diários, mesais ,semestrais e até mesmo anuais.
 
-### Setup Environment
+### Ambiente de configuração
 
 Projeto criado com React Native CLI.[ See official docs](https://reactnative.dev/docs/environment-setup) para configurar o ambiente.
 
@@ -32,7 +32,7 @@ yarn ios
 yarn android or npx react-native run-android
 ```
 
-### 🛠 Tech and Libraries
+### 🛠 Tecnologia e bibliotecas
 
 -   [React Native](https://reactnative.dev/)
 -   [TypeScript](https://www.typescriptlang.org/): Tipagem de dados
@@ -45,7 +45,7 @@ yarn android or npx react-native run-android
 -   [React-Native-Testing-Library](https://callstack.github.io/react-native-testing-library/docs/getting-started/): Para escrever teste automatizados
 -   [React-Native-Responsive-FontSize](https://github.com/heyman333/react-native-responsive-fontSize): Responsive screen size
 
-### App Screenshots
+### Capturas de tela do aplicativo
 
 |             |                 Android                  |                 IOS                  |
 | :---------: | :--------------------------------------: | :----------------------------------: |
