@@ -43,7 +43,7 @@ yarn android or npx react-native run-android
 -   [React Query](https://react-query.tanstack.com/): Busca, cache, sincronização e atualização do estado do servidor
 -   [Jest](https://jestjs.io/pt-BR/): Um poderoso Framework de Testes em JavaScript com um foco na simplicidade.
 -   [React-Native-Testing-Library](https://callstack.github.io/react-native-testing-library/docs/getting-started/): Para escrever teste automatizados
--   [React-Native-Responsive-FontSize](https://github.com/heyman333/react-native-responsive-fontSize): Responsive screen size
+-   [React-Native-Responsive-FontSize](https://github.com/heyman333/react-native-responsive-fontSize): Tamanho de tela responsivo
 
 ### Capturas de tela do aplicativo
 
