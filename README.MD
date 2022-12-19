@@ -1,6 +1,6 @@
 # App Cashbackws
 
-App onde usuário pode estar fazendo o gerenciamento financeiro de seus gasto seja eles diários, mesais ,semestrais e até mesmo anuais.
+Aplicativo onde usuário pode estar fazendo o gerenciamento financeiro de seus gasto seja eles diários, mesais ,semestrais e até mesmo anuais.
 
 ### Setup Environment
 
