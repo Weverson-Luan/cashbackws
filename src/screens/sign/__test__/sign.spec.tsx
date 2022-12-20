@@ -10,15 +10,18 @@ const Providers: React.FC = ({ children }: any) => {
 };
 describe('Screen Sign', () => {
     it('it should be able to render the sign screen', () => {
-        render(<Sign />, {
+        render(<Sign onPressNavigationTesting={() => {}} />, {
             wrapper: Providers,
         });
     });
 
     it('it should be possible to render the app logo on screen', () => {
-        const { getByTestId } = render(<Sign />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => {}} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
         const elementLogoSvg = getByTestId('app-logo');
 
@@ -26,9 +29,12 @@ describe('Screen Sign', () => {
     });
 
     it('it should be possible to render the app title on screen', () => {
-        const { getByTestId } = render(<Sign />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => {}} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
         const elementTitle = getByTestId('app-title');
 
@@ -41,9 +47,12 @@ describe('Screen Sign', () => {
     });
 
     it('it should be possible to render the app description on screen', () => {
-        const { getByTestId } = render(<Sign />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => {}} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
         const elementDescription = getByTestId('app-description');
 
@@ -56,9 +65,12 @@ describe('Screen Sign', () => {
     });
 
     it('it should be possible to render the app button-google on screen', () => {
-        const { getByTestId } = render(<Sign />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => {}} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
         const elementButtonGoogle = getByTestId('app-button-google');
 
@@ -66,12 +78,49 @@ describe('Screen Sign', () => {
     });
 
     it('it should be possible to render the app button-github on screen', () => {
-        const { getByTestId } = render(<Sign />, {
-            wrapper: Providers,
-        });
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => {}} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
         const elementButtonGithub = getByTestId('app-button-github');
 
         expect(elementButtonGithub).toBeTruthy();
+    });
+
+    it('it should be possible to call navigation function when click on enter with google button', () => {
+        const onPressNavigationTestingMock = jest.fn();
+
+        const { getByText } = render(
+            <Sign onPressNavigationTesting={onPressNavigationTestingMock} />,
+            {
+                wrapper: Providers,
+            },
+        );
+
+        const elementButtonGoogle = getByText('Entrar com Google');
+
+        fireEvent.press(elementButtonGoogle);
+
+        expect(onPressNavigationTestingMock).toBeCalled();
+    });
+
+    it('it should be possible to call navigation function when click on enter with github button', () => {
+        const onPressNavigationTestingMock = jest.fn();
+
+        const { getByText } = render(
+            <Sign onPressNavigationTesting={onPressNavigationTestingMock} />,
+            {
+                wrapper: Providers,
+            },
+        );
+
+        const elementButtonGithub = getByText('Entrar com Github');
+
+        fireEvent.press(elementButtonGithub);
+
+        expect(onPressNavigationTestingMock).toBeCalled();
     });
 });
