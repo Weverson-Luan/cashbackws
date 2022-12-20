@@ -3,8 +3,11 @@ export default {
         neutral_25: '#FFFFFF',
         neutral_50: '#F2F1F1',
         neutral_100: '#F3F3F3',
+        neutral_background: '#F0F2F5',
         black_800: '#000000',
+
         blue_cyan_200: '#2D9BB2',
+        blue_dark_800: '#363F5F',
         orange_70: ',#F2BF88',
         orang_80: '#E68011',
         gray_25: '#ECECEC',

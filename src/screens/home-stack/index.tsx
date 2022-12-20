@@ -3,31 +3,54 @@
  */
 import React from 'react';
 // libs
-import { useTheme } from 'styled-components';
 
 // components
-import { Text } from '@components/text';
+import { CardType } from '@components/card-type';
+import { Profile } from '@components/profile';
+import { SpendingCard } from '@components/spending-card';
 
 // assets
 
 // typings
+import { ICardTypeProps } from './index.d';
 
 // styles
-import { Container } from './styles';
+import {
+    Container,
+    Header,
+    ContainerContent,
+    WrapperContentType,
+    FlatList,
+} from './styles';
 
 const HomeStack = () => {
-    const theme = useTheme();
+    const data = [
+        { id: '1', type: 'Entradas', value: 'R$ 2.998,00' },
+        { id: '2', type: 'Saídas', value: 'R$ 998,00' },
+        { id: '3', type: 'Total', value: 'R$ 3.998,00' },
+    ] as ICardTypeProps[];
     return (
         <Container>
-            <Text
-                text="Home Stack"
-                fontFamily="Raleway-Bold"
-                color={theme.colors.neutral_100}
-                size={35}
-                letterHeight={35}
-                weight="700"
-                marginTop={60}
-            />
+            <Header>
+                <Profile
+                    file_url="https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no"
+                    name="Weverson"
+                />
+            </Header>
+
+            <ContainerContent>
+                <SpendingCard />
+            </ContainerContent>
+
+            <WrapperContentType>
+                <FlatList
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={data}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }: any) => <CardType data={item} />}
+                />
+            </WrapperContentType>
         </Container>
     );
 };

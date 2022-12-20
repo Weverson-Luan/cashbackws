@@ -94,7 +94,10 @@ describe('Screen Sign', () => {
         const onPressNavigationTestingMock = jest.fn();
 
         const { getByText } = render(
-            <Sign onPressNavigationTesting={onPressNavigationTestingMock} />,
+            <Sign
+                onPressNavigationTesting={onPressNavigationTestingMock}
+                testing={true}
+            />,
             {
                 wrapper: Providers,
             },
@@ -111,7 +114,10 @@ describe('Screen Sign', () => {
         const onPressNavigationTestingMock = jest.fn();
 
         const { getByText } = render(
-            <Sign onPressNavigationTesting={onPressNavigationTestingMock} />,
+            <Sign
+                onPressNavigationTesting={onPressNavigationTestingMock}
+                testing={true}
+            />,
             {
                 wrapper: Providers,
             },

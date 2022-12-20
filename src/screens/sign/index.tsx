@@ -30,15 +30,18 @@ import {
 } from './styles';
 
 interface IProps {
-    onPressNavigationTesting: () => void;
+    onPressNavigationTesting: () => void; // function for testing
+    testing?: boolean;
 }
-const Sign = ({ onPressNavigationTesting }: IProps) => {
+const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
     const theme = useTheme();
     const { navigate } = useNavigation();
 
     const handleLogin = () => {
-        onPressNavigationTesting();
-        return navigate('Sign');
+        if (testing) {
+            return onPressNavigationTesting();
+        }
+        return navigate('HomeStack');
     };
 
     return (
@@ -82,7 +85,9 @@ const Sign = ({ onPressNavigationTesting }: IProps) => {
                     <Button
                         testID="app-button-google"
                         activeOpacity={0.8}
-                        onPress={handleLogin}
+                        onPress={() => {
+                            handleLogin();
+                        }}
                         width={300}
                         height={55}
                         background_color={theme.colors.neutral_100}
