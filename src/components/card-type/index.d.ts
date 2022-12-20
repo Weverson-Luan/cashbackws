@@ -3,9 +3,11 @@
  */
 
 interface ICardTypeProps {
-    id: string;
-    type: string;
-    value: string;
+    data: {
+        id: string;
+        type: string;
+        value: string;
+    };
 }
 
 /**
