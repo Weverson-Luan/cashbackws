@@ -57,11 +57,10 @@ const SpendingCard = () => {
         <Container>
             <Header>
                 <Text
-                    style={{ fontWeight: '600' }}
                     text="Meus Gastos"
-                    fontFamily="Raleway-Bold"
+                    fontFamily={theme.fonts.primary_poppins_medium_500}
                     color={theme.colors.gray_150}
-                    size={22}
+                    size={17}
                     letterHeight={32}
                     marginTop={40}
                     align="left"
@@ -85,17 +84,19 @@ const SpendingCard = () => {
                         <HeaderSpending>
                             <Text
                                 text={item.name}
-                                fontFamily="Raleway-Bold"
+                                fontFamily={
+                                    theme.fonts.primary_poppins_regular_400
+                                }
                                 color={theme.colors.gray_150}
-                                size={16}
+                                size={14}
                                 letterHeight={26}
                                 weight="400"
                                 align="left"
                             />
                             {item.type === 'saída' ? (
-                                <CashExitSvg width={28} height={28} />
+                                <CashExitSvg width={22} height={22} />
                             ) : (
-                                <CashSvg width={28} height={28} />
+                                <CashSvg width={22} height={22} />
                             )}
                         </HeaderSpending>
 
@@ -106,7 +107,9 @@ const SpendingCard = () => {
                                         ? `${item.value}`
                                         : item.value
                                 }
-                                fontFamily="Raleway-Bold"
+                                fontFamily={
+                                    theme.fonts.primary_poppins_regular_400
+                                }
                                 color={
                                     item.type === 'saída'
                                         ? theme.colors.red_50
@@ -125,7 +128,9 @@ const SpendingCard = () => {
                                             ? `- ${item.category}`
                                             : ` ${item.value}`
                                     }
-                                    fontFamily="Raleway-Bold"
+                                    fontFamily={
+                                        theme.fonts.primary_poppins_regular_400
+                                    }
                                     color={theme.colors.gray_80}
                                     size={14}
                                     letterHeight={26}
@@ -135,7 +140,9 @@ const SpendingCard = () => {
 
                                 <Text
                                     text="22/12/2022"
-                                    fontFamily="Raleway-Bold"
+                                    fontFamily={
+                                        theme.fonts.primary_poppins_regular_400
+                                    }
                                     color={theme.colors.gray_80}
                                     size={14}
                                     letterHeight={26}

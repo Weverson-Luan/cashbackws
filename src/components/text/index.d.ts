@@ -21,7 +21,16 @@ interface ITextProps extends TextProps {
     marginRight?: number;
     margin?: number;
     textDecoration?: 'line-through' | 'underline' | 'none';
-    weight?: '300' | '400' | '500' | '600' | '700';
+    weight?:
+        | '100'
+        | '200'
+        | '300'
+        | '400'
+        | '500'
+        | '600'
+        | '700'
+        | '800'
+        | '900';
     ellipsis?: boolean;
     fontFamily?: string;
     letterSpacing?: number;

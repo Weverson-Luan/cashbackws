@@ -31,21 +31,21 @@ const Profile = ({ file_url, name }: IProfileProps) => {
             <WrapperNameUser>
                 <Text
                     text="Óla, "
-                    fontFamily="Poppins"
+                    fontFamily={theme.fonts.primary_poppins_regular_400}
                     color={theme.colors.neutral_100}
                     size={18}
                     letterHeight={26}
-                    weight="300"
+                    weight="400"
                     align="left"
                     marginBottom={4}
                 />
 
                 <Text
                     text={`${name}`}
-                    fontFamily="Poppins"
+                    fontFamily={theme.fonts.primary_poppins_semiBold_600}
                     color={theme.colors.neutral_100}
                     size={18}
-                    letterHeight={16}
+                    letterHeight={22}
                     weight="600"
                     align="left"
                     width={160}

@@ -21,12 +21,18 @@ const CardType = (cardData: ICardTypeProps) => {
     const theme = useTheme();
 
     return (
-        <Container activeOpacity={0.8}>
-            <Header>
+        <Container
+            activeOpacity={0.8}
+            isTypeCard={cardData.data.type === 'Total'}>
+            <Header isTypeCard={cardData.data.type === 'Total'}>
                 <Text
                     text={cardData.data.type}
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.gray_150}
+                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    color={
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
+                            : theme.colors.gray_150
+                    }
                     size={18}
                     letterHeight={26}
                     weight="400"
@@ -43,26 +49,38 @@ const CardType = (cardData: ICardTypeProps) => {
             <WrapperText>
                 <Text
                     text={cardData.data.value}
-                    fontFamily="Raleway-Bold"
+                    fontFamily={theme.fonts.primary_poppins_medium_500}
                     color={
-                        cardData.data.type === 'Saídas'
-                            ? theme.colors.red_50
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
                             : theme.colors.gray_150
                     }
                     size={18}
                     letterHeight={26}
-                    weight="700"
                     align="left"
                 />
 
                 <Text
-                    text="Última entrada dia 03 de novenbro"
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.gray_80}
-                    size={14}
+                    text={`${
+                        cardData.data.type === 'Total'
+                            ? '01 a 17 de dezembro'
+                            : `Última ${
+                                  cardData.data.type === 'Saídas'
+                                      ? 'saída'
+                                      : 'entrada'
+                              } dia ${cardData.data.created_at}`
+                    }`}
+                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    color={
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
+                            : theme.colors.gray_80
+                    }
+                    size={13}
                     letterHeight={26}
                     weight="300"
                     align="left"
+                    marginTop={4}
                 />
             </WrapperText>
         </Container>
