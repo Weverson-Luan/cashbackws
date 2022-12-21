@@ -2,8 +2,10 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // screens
-import { HomeStack } from '@screens/home-stack';
 import { Sign } from '@screens/sign';
+
+//bottom Tabs
+import { BottomTabsAuth } from './index.bottomTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,8 +15,12 @@ function AppRoutesOpen() {
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen name="Sign" component={Sign} />
-            <Stack.Screen name="HomeStack" component={HomeStack} />
+            <Stack.Screen
+                name="Sign"
+                // @ts-expect-error:next-line
+                component={Sign}
+            />
+            {/* <Stack.Screen name="HomeStack" component={BottomTabsAuth} /> */}
         </Stack.Navigator>
     );
 }

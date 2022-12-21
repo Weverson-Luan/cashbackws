@@ -16,7 +16,7 @@ const Container = styled.TouchableOpacity.attrs({
     elevation: 13,
 })`
     width: ${RFValue(300)}px;
-    height: ${RFValue(180)}px;
+    height: ${RFValue(160)}px;
     background-color: ${({ theme }) => theme.colors.neutral_25};
     border-radius: 6px;
     margin-left: ${RFValue(2)}px;

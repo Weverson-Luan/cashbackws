@@ -14,12 +14,12 @@ import { Text } from '@components/text';
 // styles
 import { Container } from './styles';
 
-const HomeStack = () => {
+const RegisterExpenses = () => {
     const theme = useTheme();
     return (
         <Container>
             <Text
-                text="Screen default de example"
+                text="Screen RegisterExpenses"
                 fontFamily="Raleway-Bold"
                 color={theme.colors.neutral_100}
                 size={35}
@@ -34,4 +34,4 @@ const HomeStack = () => {
 /**
  * EXPORTS
  */
-export { HomeStack };
+export { RegisterExpenses };
