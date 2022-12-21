@@ -27,9 +27,24 @@ import {
 
 const HomeStack = () => {
     const data = [
-        { id: '1', type: 'Entradas', value: 'R$ 2.998,00' },
-        { id: '2', type: 'Saídas', value: 'R$ 998,00' },
-        { id: '3', type: 'Total', value: 'R$ 3.998,00' },
+        {
+            id: '1',
+            type: 'Entradas',
+            value: 'R$ 2.998,00',
+            created_at: '25 de outubro',
+        },
+        {
+            id: '2',
+            type: 'Saídas',
+            value: 'R$ 998,00',
+            created_at: '13 de abril',
+        },
+        {
+            id: '3',
+            type: 'Total',
+            value: 'R$ 3.998,00',
+            created_at: '21 de dezembro',
+        },
     ] as ICardTypeProps[];
     return (
         <Container>
