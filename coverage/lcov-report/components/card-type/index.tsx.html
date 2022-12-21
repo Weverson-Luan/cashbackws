@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -133,7 +133,31 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,6 +179,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -213,7 +259,8 @@ import { useTheme } from 'styled-components/native';
 import { Text } from '@components/text';
 &nbsp;
 // assets
-import CashSvg from '../../assets/icons-svg/cash.svg';
+import CashSvg from '../../assets/icons-svg/entry.svg';
+import CashExitSvg from '../../assets/icons-svg/entry-danger.svg';
 &nbsp;
 // typings
 import { ICardTypeProps } from './index.d';
@@ -225,44 +272,66 @@ const CardType = <span class="cstat-no" title="statement not covered" ><span cla
     const theme = <span class="cstat-no" title="statement not covered" >useTheme();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;Container activeOpacity={0.8}&gt;
-            &lt;Header&gt;
+        &lt;Container
+            activeOpacity={0.8}
+            isTypeCard={cardData.data.type === 'Total'}&gt;
+            &lt;Header isTypeCard={cardData.data.type === 'Total'}&gt;
                 &lt;Text
                     text={cardData.data.type}
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.blue_dark_800}
+                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    color={
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
+                            : theme.colors.gray_150
+                    }
                     size={18}
                     letterHeight={26}
                     weight="400"
                     align="left"
                 /&gt;
 &nbsp;
-                &lt;CashSvg width={28} height={28} /&gt;
+                {cardData.data.type === 'Saídas' ? (
+                    &lt;CashExitSvg width={28} height={28} /&gt;
+                ) : (
+                    &lt;CashSvg width={28} height={28} /&gt;
+                )}
             &lt;/Header&gt;
 &nbsp;
             &lt;WrapperText&gt;
                 &lt;Text
                     text={cardData.data.value}
-                    fontFamily="Raleway-Bold"
+                    fontFamily={theme.fonts.primary_poppins_medium_500}
                     color={
-                        cardData.data.type === 'Saídas'
-                            ? theme.colors.red_50
-                            : theme.colors.blue_dark_800
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
+                            : theme.colors.gray_150
                     }
                     size={18}
                     letterHeight={26}
-                    weight="700"
                     align="left"
                 /&gt;
 &nbsp;
                 &lt;Text
-                    text="Última entradas dia 03 de novenbro"
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.gray_80}
-                    size={14}
+                    text={`${
+                        cardData.data.type === 'Total'
+                            ? '01 a 17 de dezembro'
+                            : `Última ${
+                                  cardData.data.type === 'Saídas'
+                                      ? 'saída'
+                                      : 'entrada'
+                              } dia ${cardData.data.created_at}`
+                    }`}
+                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    color={
+                        cardData.data.type === 'Total'
+                            ? theme.colors.neutral_25
+                            : theme.colors.gray_80
+                    }
+                    size={13}
                     letterHeight={26}
                     weight="300"
                     align="left"
+                    marginTop={4}
                 /&gt;
             &lt;/WrapperText&gt;
         &lt;/Container&gt;
@@ -280,7 +349,7 @@ export { CardType };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-20T05:16:23.442Z
+                at 2022-12-21T05:05:30.095Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

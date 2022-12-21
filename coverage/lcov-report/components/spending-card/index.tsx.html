@@ -220,7 +220,14 @@
 <a name='L155'></a><a href='#L155'>155</a>
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -300,10 +307,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -381,7 +395,7 @@
  * IMPORT
  */
 import React from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 &nbsp;
 // components
 import { Text } from '@components/text';
@@ -426,7 +440,7 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
         {
             id: '3',
             name: 'Notebook Acer aspire',
-            category: 'computador',
+            category: 'Saídas',
             type: 'saída',
             value: 'R$ 3.998,00',
             date: '10/12/2022',
@@ -437,12 +451,11 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
             &lt;Header&gt;
                 &lt;Text
                     text="Meus Gastos"
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.blue_dark_800}
-                    size={22}
+                    fontFamily={theme.fonts.primary_poppins_medium_500}
+                    color={theme.colors.gray_150}
+                    size={17}
                     letterHeight={32}
-                    weight="700"
-                    marginTop={50}
+                    marginTop={40}
                     align="left"
                 /&gt;
                 {/* &lt;Text
@@ -464,17 +477,19 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
                         &lt;HeaderSpending&gt;
                             &lt;Text
                                 text={item.name}
-                                fontFamily="Raleway-Bold"
-                                color={'#363F5F'}
-                                size={16}
+                                fontFamily={
+                                    theme.fonts.primary_poppins_regular_400
+                                }
+                                color={theme.colors.gray_150}
+                                size={14}
                                 letterHeight={26}
                                 weight="400"
                                 align="left"
                             /&gt;
                             {item.type === 'saída' ? (
-                                &lt;CashExitSvg width={28} height={28} /&gt;
+                                &lt;CashExitSvg width={22} height={22} /&gt;
                             ) : (
-                                &lt;CashSvg width={28} height={28} /&gt;
+                                &lt;CashSvg width={22} height={22} /&gt;
                             )}
                         &lt;/HeaderSpending&gt;
 &nbsp;
@@ -482,13 +497,15 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
                             &lt;Text
                                 text={
                                     item.type === 'saída'
-                                        ? `- ${item.value}`
+                                        ? `${item.value}`
                                         : item.value
                                 }
-                                fontFamily="Raleway-Bold"
+                                fontFamily={
+                                    theme.fonts.primary_poppins_regular_400
+                                }
                                 color={
                                     item.type === 'saída'
-                                        ? theme.colors.red_100
+                                        ? theme.colors.red_50
                                         : theme.colors.green
                                 }
                                 size={18}
@@ -502,9 +519,11 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
                                     text={
                                         item.category === 'Saídas'
                                             ? `- ${item.category}`
-                                            : `$ ${item.value}`
+                                            : ` ${item.value}`
                                     }
-                                    fontFamily="Raleway-Bold"
+                                    fontFamily={
+                                        theme.fonts.primary_poppins_regular_400
+                                    }
                                     color={theme.colors.gray_80}
                                     size={14}
                                     letterHeight={26}
@@ -514,7 +533,9 @@ const SpendingCard = <span class="cstat-no" title="statement not covered" ><span
 &nbsp;
                                 &lt;Text
                                     text="22/12/2022"
-                                    fontFamily="Raleway-Bold"
+                                    fontFamily={
+                                        theme.fonts.primary_poppins_regular_400
+                                    }
                                     color={theme.colors.gray_80}
                                     size={14}
                                     letterHeight={26}
@@ -541,7 +562,7 @@ export { SpendingCard };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-20T05:16:23.442Z
+                at 2022-12-21T05:05:30.095Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
