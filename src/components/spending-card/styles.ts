@@ -8,8 +8,8 @@ const Container = styled.View`
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: ${RFValue(22)}px;
-    margin-bottom: ${RFValue(32)}px;
+    padding: ${RFValue(6)}px;
+    margin-bottom: ${RFValue(36)}px;
 `;
 
 const Header = styled.View`
@@ -32,12 +32,12 @@ const ContainerSpending = styled.TouchableOpacity.attrs({
     elevation: 13,
 })`
     width: ${RFValue(300)}px;
-    height: ${RFValue(140)}px;
+    height: ${RFValue(128)}px;
     background-color: ${({ theme }) => theme.colors.neutral_25};
-    border-radius: 6px;
+    border-radius: 8px;
     margin-left: ${RFValue(2)}px;
     margin-right: ${RFValue(18)}px;
-    margin-top: ${RFValue(24)}px;
+    margin-top: ${RFValue(12)}px;
 `;
 
 const HeaderSpending = styled.View`
@@ -46,8 +46,8 @@ const HeaderSpending = styled.View`
     align-items: flex-start;
     justify-content: space-around;
     background-color: ${({ theme }) => theme.colors.neutral_25};
-    border-radius: 6px;
-    padding: ${RFValue(22)}px;
+    border-radius: 8px;
+    padding: ${RFValue(12)}px;
 `;
 
 const WrapperText = styled.View`
@@ -60,7 +60,7 @@ const WrapperText = styled.View`
 const WrapperTextFooterDate = styled.View`
     width: 70%;
     flex-direction: row;
-    padding: ${RFValue(12)}px;
+    margin-top: ${RFValue(12)}px;
 `;
 /**
  * EXPORT

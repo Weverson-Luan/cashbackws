@@ -36,6 +36,7 @@ interface IProps {
 const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
     const theme = useTheme();
     const { navigate } = useNavigation();
+    console.log(' :');
 
     const handleLogin = () => {
         if (testing) {

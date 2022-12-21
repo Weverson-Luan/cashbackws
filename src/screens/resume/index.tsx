@@ -2,7 +2,6 @@
  * IMPORT
  */
 import React from 'react';
-import { useTheme } from 'styled-components';
 
 // components
 import { Text } from '@components/text';
@@ -13,13 +12,14 @@ import { Text } from '@components/text';
 
 // styles
 import { Container } from './styles';
+import { useTheme } from 'styled-components';
 
-const HomeStack = () => {
+const Resume = () => {
     const theme = useTheme();
     return (
         <Container>
             <Text
-                text="Screen default de example"
+                text="Screen Resume"
                 fontFamily="Raleway-Bold"
                 color={theme.colors.neutral_100}
                 size={35}
@@ -34,4 +34,4 @@ const HomeStack = () => {
 /**
  * EXPORTS
  */
-export { HomeStack };
+export { Resume };

@@ -2,7 +2,7 @@
  * IMPORT
  */
 import React from 'react';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
 
 // components
 import { Text } from '@components/text';
@@ -47,7 +47,7 @@ const SpendingCard = () => {
         {
             id: '3',
             name: 'Notebook Acer aspire',
-            category: 'computador',
+            category: 'Saídas',
             type: 'saída',
             value: 'R$ 3.998,00',
             date: '10/12/2022',
@@ -57,13 +57,13 @@ const SpendingCard = () => {
         <Container>
             <Header>
                 <Text
+                    style={{ fontWeight: '600' }}
                     text="Meus Gastos"
                     fontFamily="Raleway-Bold"
-                    color={theme.colors.blue_dark_800}
+                    color={theme.colors.gray_150}
                     size={22}
                     letterHeight={32}
-                    weight="700"
-                    marginTop={50}
+                    marginTop={40}
                     align="left"
                 />
                 {/* <Text
@@ -86,7 +86,7 @@ const SpendingCard = () => {
                             <Text
                                 text={item.name}
                                 fontFamily="Raleway-Bold"
-                                color={'#363F5F'}
+                                color={theme.colors.gray_150}
                                 size={16}
                                 letterHeight={26}
                                 weight="400"
@@ -103,13 +103,13 @@ const SpendingCard = () => {
                             <Text
                                 text={
                                     item.type === 'saída'
-                                        ? `- ${item.value}`
+                                        ? `${item.value}`
                                         : item.value
                                 }
                                 fontFamily="Raleway-Bold"
                                 color={
                                     item.type === 'saída'
-                                        ? theme.colors.red_100
+                                        ? theme.colors.red_50
                                         : theme.colors.green
                                 }
                                 size={18}
@@ -123,7 +123,7 @@ const SpendingCard = () => {
                                     text={
                                         item.category === 'Saídas'
                                             ? `- ${item.category}`
-                                            : `$ ${item.value}`
+                                            : ` ${item.value}`
                                     }
                                     fontFamily="Raleway-Bold"
                                     color={theme.colors.gray_80}
