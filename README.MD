@@ -51,3 +51,9 @@ yarn android or npx react-native run-android
 | :---------: | :--------------------------------------: | :----------------------------------: |
 | Sign Screen | ![](docs/images/android/sign-screen.png) | ![](docs/images/ios/sign-screen.png) |
 | Home Screen | ![](docs/images/android/home-screen.png) | ![](docs/images/ios/home-screen.png) |
+
+## ©️ License
+
+    Este projeto está sob licença [MIT](./LICENSE). </br>
+    Feito com ❤️ por Weverson Luan de Sousa. Entre em contato 👋🏽 => **[Linkend](https://www.linkedin.com/in/weverson-luan-de-sousa-1969a81b0/)**</br>
+    Made by [Weverson](https://portfolio-henna-theta.vercel.app/)
