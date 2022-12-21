@@ -10,6 +10,7 @@ import { Profile } from '@components/profile';
 import { SpendingCard } from '@components/spending-card';
 
 // assets
+import LogoutSvg from '../../assets/icons-svg/power.svg';
 
 // typings
 import { ICardTypeProps } from './index.d';
@@ -18,6 +19,7 @@ import { ICardTypeProps } from './index.d';
 import {
     Container,
     Header,
+    WrapperIcon,
     ContainerContent,
     WrapperContentType,
     FlatList,
@@ -36,6 +38,9 @@ const HomeStack = () => {
                     file_url="https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no"
                     name="Weverson"
                 />
+                <WrapperIcon>
+                    <LogoutSvg width={28} height={28} />
+                </WrapperIcon>
             </Header>
 
             <ContainerContent>
