@@ -9,6 +9,7 @@ interface ICardTypeProps {
         value: string;
         created_at: string;
     };
+    isTypeCard: boolean;
 }
 
 /**

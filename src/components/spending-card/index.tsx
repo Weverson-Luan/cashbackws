@@ -12,7 +12,7 @@ import CashSvg from '../../assets/icons-svg/cash.svg';
 import CashExitSvg from '../../assets/icons-svg/cash-exit.svg';
 
 // typings
-
+import { ISpendingProps, ICardTypeProps } from './index.d';
 // styles
 import {
     Container,
@@ -24,10 +24,10 @@ import {
     FlatList,
 } from './styles';
 
-const SpendingCard = () => {
+const SpendingCard = ({ testID, ...res }: ISpendingProps) => {
     const theme = useTheme();
 
-    const data = [
+    const data: ICardTypeProps[] = [
         {
             id: '1',
             name: 'Desenvolvimento de sistema',
@@ -52,9 +52,9 @@ const SpendingCard = () => {
             value: 'R$ 3.998,00',
             date: '10/12/2022',
         },
-    ];
+    ] as ICardTypeProps[];
     return (
-        <Container>
+        <Container {...res} testID={testID}>
             <Header>
                 <Text
                     text="Meus Gastos"
@@ -78,8 +78,8 @@ const SpendingCard = () => {
             </Header>
             <FlatList
                 data={data}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
+                keyExtractor={(item: any) => String(item.id)}
+                renderItem={({ item }: any) => (
                     <ContainerSpending activeOpacity={0.8}>
                         <HeaderSpending>
                             <Text
@@ -87,7 +87,7 @@ const SpendingCard = () => {
                                 fontFamily={
                                     theme.fonts.primary_poppins_regular_400
                                 }
-                                color={theme.colors.gray_150}
+                                color={theme.colors.neutral_25}
                                 size={14}
                                 letterHeight={26}
                                 weight="400"
