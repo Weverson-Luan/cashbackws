@@ -32,7 +32,7 @@ const ContainerSpending = styled.TouchableOpacity.attrs({
     elevation: 13,
 })`
     width: ${RFValue(300)}px;
-    height: ${RFValue(128)}px;
+    height: ${RFValue(120)}px;
     background-color: ${({ theme }) => theme.colors.neutral_25};
     border-radius: 8px;
     margin-left: ${RFValue(2)}px;
@@ -45,16 +45,23 @@ const HeaderSpending = styled.View`
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    background-color: ${({ theme }) => theme.colors.neutral_25};
-    border-radius: 8px;
-    padding: ${RFValue(12)}px;
+    background-color: ${({ theme }) => theme.colors.blue_cyan_200};
+    padding-left: ${RFValue(12)}px;
+    padding-right: ${RFValue(12)}px;
+    padding-top: ${RFValue(4)}px;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 `;
 
 const WrapperText = styled.View`
     width: 100%;
     flex-direction: column;
-    padding: ${RFValue(12)}px;
-    margin-top: -14px;
+    padding-top: ${RFValue(12)}px;
+    padding-left: ${RFValue(6)}px;
+    padding-right: ${RFValue(16)}px;
+
+    background: transparent;
 `;
 
 const WrapperTextFooterDate = styled.View`

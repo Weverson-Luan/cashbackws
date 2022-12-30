@@ -16,11 +16,11 @@ import { IProfileProps } from './index.d';
 // styles
 import { Container, WrapperImage, Image, WrapperNameUser } from './styles';
 
-const Profile = ({ file_url, name }: IProfileProps) => {
+const Profile = ({ file_url, name, testID, ...res }: IProfileProps) => {
     const theme = useTheme();
 
     return (
-        <Container activeOpacity={0.8}>
+        <Container {...res} testID={testID} activeOpacity={0.8}>
             <WrapperImage>
                 <Image
                     source={{

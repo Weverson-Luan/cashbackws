@@ -1,8 +1,10 @@
 /**
  * IMPORT
  */
-import React from 'react';
+import React, { useCallback } from 'react';
+
 // libs
+import { useNavigation } from '@react-navigation/native';
 
 // components
 import { CardType } from '@components/card-type';
@@ -25,7 +27,14 @@ import {
     FlatList,
 } from './styles';
 
-const HomeStack = () => {
+interface IHomeStackProps {
+    onPressNavigationTesting: () => void; // function for testing
+    testing?: boolean;
+}
+
+const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
+    const navigation = useNavigation();
+
     const data = [
         {
             id: '1',
@@ -46,29 +55,49 @@ const HomeStack = () => {
             created_at: '21 de dezembro',
         },
     ] as ICardTypeProps[];
+
+    const handleLogout = useCallback(() => {
+        if (testing) {
+            onPressNavigationTesting();
+            navigation.navigate('Sign');
+        } else {
+            navigation.navigate('Sign');
+        }
+    }, []);
     return (
         <Container>
             <Header>
                 <Profile
+                    testID="card-profile"
                     file_url="https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no"
                     name="Weverson"
                 />
-                <WrapperIcon>
+                <WrapperIcon
+                    testID="button-logout"
+                    onPress={() => {
+                        handleLogout();
+                    }}>
                     <LogoutSvg width={28} height={28} />
                 </WrapperIcon>
             </Header>
 
             <ContainerContent>
-                <SpendingCard />
+                <SpendingCard testID="cards-type" />
             </ContainerContent>
 
             <WrapperContentType>
                 <FlatList
+                    testID="expense-list"
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={data}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }: any) => <CardType data={item} />}
+                    keyExtractor={(item: any) => String(item.id)}
+                    renderItem={({ item }: any) => (
+                        <CardType
+                            isTypeCard={item.type === 'Total'}
+                            data={item}
+                        />
+                    )}
                 />
             </WrapperContentType>
         </Container>
