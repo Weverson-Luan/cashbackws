@@ -41,7 +41,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
         if (testing) {
             return onPressNavigationTesting();
         }
-        return navigate('HomeStack');
+        return navigate('HomeBottomTab');
     };
 
     return (

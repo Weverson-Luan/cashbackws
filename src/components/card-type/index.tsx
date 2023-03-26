@@ -22,10 +22,12 @@ const CardType = (cardData: ICardTypeProps) => {
 
     return (
         <Container
+            testID="card-type"
             activeOpacity={0.8}
-            isTypeCard={cardData.data.type === 'Total'}>
+            isTypeCard={cardData.isTypeCard}>
             <Header isTypeCard={cardData.data.type === 'Total'}>
                 <Text
+                    testID="title-card-type"
                     text={cardData.data.type}
                     fontFamily={theme.fonts.primary_poppins_regular_400}
                     color={
@@ -40,14 +42,23 @@ const CardType = (cardData: ICardTypeProps) => {
                 />
 
                 {cardData.data.type === 'Saídas' ? (
-                    <CashExitSvg width={28} height={28} />
+                    <CashExitSvg
+                        width={28}
+                        height={28}
+                        testID="card-type-icon-svg"
+                    />
                 ) : (
-                    <CashSvg width={28} height={28} />
+                    <CashSvg
+                        width={28}
+                        height={28}
+                        testID="card-type-icon-svg"
+                    />
                 )}
             </Header>
 
             <WrapperText>
                 <Text
+                    testID="text-value-card-type"
                     text={cardData.data.value}
                     fontFamily={theme.fonts.primary_poppins_medium_500}
                     color={
@@ -61,6 +72,7 @@ const CardType = (cardData: ICardTypeProps) => {
                 />
 
                 <Text
+                    testID="text-date-card-type"
                     text={`${
                         cardData.data.type === 'Total'
                             ? '01 a 17 de dezembro'
