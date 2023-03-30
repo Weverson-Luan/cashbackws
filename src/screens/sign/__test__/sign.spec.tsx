@@ -28,67 +28,67 @@ describe('Screen Sign', () => {
         expect(elementLogoSvg).toBeTruthy();
     });
 
-    // it('it should be possible to render the app title on screen', () => {
-    //     const { getByTestId } = render(
-    //         <Sign onPressNavigationTesting={() => { }} />,
-    //         {
-    //             wrapper: Providers,
-    //         },
-    //     );
+    it('it should be possible to render the app title on screen', () => {
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => { }} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
-    //     const elementTitle = getByTestId('app-title');
+        const elementTitle = getByTestId('app-title');
 
-    //     expect(elementTitle).toBeTruthy();
+        expect(elementTitle).toBeTruthy();
 
-    //     expect(elementTitle.props.children).toEqual([
-    //         ' ',
-    //         'Controle seus Gastos de forma muito simples.',
-    //     ]);
-    // });
+        expect(elementTitle.props.children).toEqual([
+            ' ',
+            'Controle seus\r Gastos de forma\r muito simples.',
+        ]);
+    });
 
-    // it('it should be possible to render the app description on screen', () => {
-    //     const { getByTestId } = render(
-    //         <Sign onPressNavigationTesting={() => { }} />,
-    //         {
-    //             wrapper: Providers,
-    //         },
-    //     );
+    it('it should be possible to render the app description on screen', () => {
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => { }} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
-    //     const elementDescription = getByTestId('app-description');
+        const elementDescription = getByTestId('app-description');
 
-    //     expect(elementDescription).toBeTruthy();
+        expect(elementDescription).toBeTruthy();
 
-    //     expect(elementDescription.props.children).toEqual([
-    //         ' ',
-    //         'Faça seu login com uma conta google ou github abaixo',
-    //     ]);
-    // });
+        expect(elementDescription.props.children).toEqual([
+            ' ',
+            'Faça seu login com\r uma conta google ou github abaixo',
+        ]);
+    });
 
-    // it('it should be possible to render the app button-google on screen', () => {
-    //     const { getByTestId } = render(
-    //         <Sign onPressNavigationTesting={() => {}} />,
-    //         {
-    //             wrapper: Providers,
-    //         },
-    //     );
+    it('it should be possible to render the app button-google on screen', () => {
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => { }} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
-    //     const elementButtonGoogle = getByTestId('app-button-google');
+        const elementButtonGoogle = getByTestId('app-button-google');
 
-    //     expect(elementButtonGoogle).toBeTruthy();
-    // });
+        expect(elementButtonGoogle).toBeTruthy();
+    });
 
-    // it('it should be possible to render the app button-github on screen', () => {
-    //     const { getByTestId } = render(
-    //         <Sign onPressNavigationTesting={() => {}} />,
-    //         {
-    //             wrapper: Providers,
-    //         },
-    //     );
+    it('it should be possible to render the app button-github on screen', () => {
+        const { getByTestId } = render(
+            <Sign onPressNavigationTesting={() => { }} />,
+            {
+                wrapper: Providers,
+            },
+        );
 
-    //     const elementButtonGithub = getByTestId('app-button-github');
+        const elementButtonGithub = getByTestId('app-button-github');
 
-    //     expect(elementButtonGithub).toBeTruthy();
-    // });
+        expect(elementButtonGithub).toBeTruthy();
+    });
 
     it('it should be possible to call navigation function when click on enter with google button', () => {
         const onPressNavigationTestingMock = jest.fn();
