@@ -14,7 +14,7 @@ import { Text } from '@components/text';
 // styles
 import { Container } from './styles';
 
-const HomeStack = () => {
+const Default = () => {
     const theme = useTheme();
     return (
         <Container>
@@ -34,4 +34,4 @@ const HomeStack = () => {
 /**
  * EXPORTS
  */
-export { HomeStack };
+export { Default };

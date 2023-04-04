@@ -15,7 +15,7 @@ const Container = styled.View`
 const WrapperLogo = styled.View`
     width: 100%;
     height: ${RFValue(80)}px;
-    margin-top: ${RFValue(80)}px;
+    margin-top: ${RFValue(40)}px;
     align-items: center;
     justify-content: center;
 `;
@@ -31,7 +31,7 @@ const WrapperDescription = styled.View`
     width: 100%;
     padding: ${RFValue(16)}px;
     margin-bottom: ${RFValue(30)}px;
-    margin-top: ${RFValue(30)}px;
+    margin-top: ${RFValue(10)}px;
     align-items: center;
     justify-content: center;
 `;

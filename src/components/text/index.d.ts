@@ -22,17 +22,30 @@ interface ITextProps extends TextProps {
     margin?: number;
     textDecoration?: 'line-through' | 'underline' | 'none';
     weight?:
-        | '100'
-        | '200'
-        | '300'
-        | '400'
-        | '500'
-        | '600'
-        | '700'
-        | '800'
-        | '900';
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
     ellipsis?: boolean;
-    fontFamily?: string;
+    fontFamily?:
+    'Poppins-Thin'
+    | 'Poppins-thinItalic'
+    | 'Poppins-Light'
+    | 'Poppins-LightItalic'
+    | 'Poppins-Regular'
+    | 'Poppins-Medium'
+    | 'Poppins-MediumItalic'
+    | 'Poppins-SemiBold'
+    | 'Poppins-SemiboldItalic'
+    | 'Poppins-Bold'
+    | 'Poppins-SemiBold'
+    | 'Poppins-Black'
+    | 'Poppins-BlackItalic'
     letterSpacing?: number;
     letterHeight?: number;
     zIndex?: number;

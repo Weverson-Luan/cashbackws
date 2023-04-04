@@ -56,10 +56,10 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                     text="Controle seus
                     Gastos de forma
                     muito simples."
-                    fontFamily="Raleway-Bold"
+                    fontFamily="Poppins-SemiBold"
                     color={theme.colors.neutral_100}
                     size={35}
-                    letterHeight={35}
+                    letterHeight={40}
                     weight="500"
                     marginTop={60}
                 />
@@ -70,7 +70,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                     testID="app-description"
                     text="Faça seu login com
                     uma conta google ou github abaixo"
-                    fontFamily="Raleway-Bold"
+                    fontFamily="Poppins-SemiBold"
                     color={theme.colors.neutral_100}
                     size={16}
                     letterHeight={24}

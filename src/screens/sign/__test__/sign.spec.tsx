@@ -10,14 +10,14 @@ const Providers: React.FC = ({ children }: any) => {
 };
 describe('Screen Sign', () => {
     it('it should be able to render the sign screen', () => {
-        render(<Sign onPressNavigationTesting={() => {}} />, {
+        render(<Sign onPressNavigationTesting={() => { }} />, {
             wrapper: Providers,
         });
     });
 
     it('it should be possible to render the app logo on screen', () => {
         const { getByTestId } = render(
-            <Sign onPressNavigationTesting={() => {}} />,
+            <Sign onPressNavigationTesting={() => { }} />,
             {
                 wrapper: Providers,
             },
@@ -30,7 +30,7 @@ describe('Screen Sign', () => {
 
     it('it should be possible to render the app title on screen', () => {
         const { getByTestId } = render(
-            <Sign onPressNavigationTesting={() => {}} />,
+            <Sign onPressNavigationTesting={() => { }} />,
             {
                 wrapper: Providers,
             },
@@ -42,13 +42,13 @@ describe('Screen Sign', () => {
 
         expect(elementTitle.props.children).toEqual([
             ' ',
-            'Controle seus Gastos de forma muito simples.',
+            'Controle seus\r Gastos de forma\r muito simples.',
         ]);
     });
 
     it('it should be possible to render the app description on screen', () => {
         const { getByTestId } = render(
-            <Sign onPressNavigationTesting={() => {}} />,
+            <Sign onPressNavigationTesting={() => { }} />,
             {
                 wrapper: Providers,
             },
@@ -60,13 +60,13 @@ describe('Screen Sign', () => {
 
         expect(elementDescription.props.children).toEqual([
             ' ',
-            'Faça seu login com uma conta google ou github abaixo',
+            'Faça seu login com\r uma conta google ou github abaixo',
         ]);
     });
 
     it('it should be possible to render the app button-google on screen', () => {
         const { getByTestId } = render(
-            <Sign onPressNavigationTesting={() => {}} />,
+            <Sign onPressNavigationTesting={() => { }} />,
             {
                 wrapper: Providers,
             },
@@ -79,7 +79,7 @@ describe('Screen Sign', () => {
 
     it('it should be possible to render the app button-github on screen', () => {
         const { getByTestId } = render(
-            <Sign onPressNavigationTesting={() => {}} />,
+            <Sign onPressNavigationTesting={() => { }} />,
             {
                 wrapper: Providers,
             },
