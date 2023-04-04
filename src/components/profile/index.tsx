@@ -20,9 +20,10 @@ const Profile = ({ file_url, name, testID, ...res }: IProfileProps) => {
     const theme = useTheme();
 
     return (
-        <Container {...res} testID={testID} activeOpacity={0.8}>
+        <Container {...res} testID={testID ? testID : 'component-profile'} activeOpacity={0.8} >
             <WrapperImage>
                 <Image
+                    testID='image-profile'
                     source={{
                         uri: `${file_url}`,
                     }}
@@ -31,7 +32,7 @@ const Profile = ({ file_url, name, testID, ...res }: IProfileProps) => {
             <WrapperNameUser>
                 <Text
                     text="Óla, "
-                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    fontFamily={'Poppins-Regular'}
                     color={theme.colors.neutral_100}
                     size={18}
                     letterHeight={26}
@@ -41,8 +42,9 @@ const Profile = ({ file_url, name, testID, ...res }: IProfileProps) => {
                 />
 
                 <Text
+                    testID='text-name-user'
                     text={`${name}`}
-                    fontFamily={theme.fonts.primary_poppins_semiBold_600}
+                    fontFamily={'Poppins-SemiBold'}
                     color={theme.colors.neutral_100}
                     size={18}
                     letterHeight={22}
