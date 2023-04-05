@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { ButtonProps } from './index.d';
 
-const Container = styled(TouchableOpacity)<ButtonProps>`
+const Container = styled(TouchableOpacity) <ButtonProps>`
     width: ${({ width }) => (width ? ` ${RFValue(width)}px` : '100%')};
     height: ${({ height }) => (height ? ` ${RFValue(height)}px` : '100%')};
     background-color: ${({ theme, background_color }) =>
@@ -22,6 +22,7 @@ const Container = styled(TouchableOpacity)<ButtonProps>`
         `${RFValue(marginBottom)}px`};
     margin-top: ${({ marginTop = 0 }: any) => `${RFValue(marginTop)}px`};
     margin-left: ${({ marginLeft = 0 }: any) => `${RFValue(marginLeft)}px`};
+   
 `;
 
 /**

@@ -2,9 +2,17 @@
  * IMPORTS
  */
 
-interface IProps {}
+interface Props {
+  type: 'entrada' | 'saida';
+};
+
+interface DataOptions {
+  id: string;
+  title: string;
+  value: string;
+}
 
 /**
  * EXPORTS
  */
-export { IProps };
+export { Props, DataOptions };

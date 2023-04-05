@@ -3,34 +3,31 @@
  */
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components';
+import { TouchableOpacity } from 'react-native';
+
+import { Formik } from 'formik';
+
+import { ArrowCircleUp, ArrowCircleDown, FilePlus } from 'phosphor-react-native';
 
 // components
+import { Box } from '@components/box';
+import { Button } from '@components/form/button';
+import { DropdownSelect } from '@components/form/select-dropdown';
+import { Header } from '@components/header';
+import { Input } from '@components/form/input';
 import { Text } from '@components/text';
-import { isCNPJ, formatToBRL } from 'brazilian-values';
-// assets
-
-// typings
 
 // styles
 import { Container } from './styles';
-import { Header } from '@components/header';
-import { Input } from '@components/form/input';
-import { Box } from '@components/box';
-import { Button } from '@components/form/button';
-import { ArrowCircleUp, ArrowCircleDown, FilePlus } from 'phosphor-react-native';
 
 
-import { DropdownSelect } from '@components/form/select-dropdown';
-import { Formik } from 'formik';
+// schema
 import { initialValue, schemaRegister } from './schema';
-import { TouchableOpacity } from 'react-native';
 
-interface Props {
-    type: 'entrada' | 'saida';
-}
+// typings
+import { Props, DataOptions } from "./index.d";
 const RegisterExpenses = () => {
     const theme = useTheme();
-    const countries = ["Egypt", "Canada", "Australia", "Ireland"]
 
     const [selectType, setSelectType] = useState<Props>();
     const [selectedItem, setSelectedItem] = useState<string>()
@@ -42,7 +39,17 @@ const RegisterExpenses = () => {
     const [name, setName] = useState<string>('')
     const [value, setValue] = useState<string>('')
 
-
+    const dataOptions = [
+        { id: '5', title: 'Alimentação', value: '' },
+        { id: '7', title: 'Café da manhã', value: '' },
+        { id: '9', title: 'Compras', value: '' },
+        { id: '4', title: 'Entrada', value: '' },
+        { id: '6', title: 'Moto', value: '' },
+        { id: '8', title: 'Free Lancer', value: '' },
+        { id: '3', title: 'Retirada', value: '' },
+        { id: '1', title: 'Empréstimo 10% - Saia do aperto', value: '' },
+        { id: '2', title: 'Empréstimo 15% - Saia do sufoco', value: '' },
+    ] as DataOptions[];
 
 
     const handleItem = (nameTypeSelected: string) => {
@@ -52,8 +59,7 @@ const RegisterExpenses = () => {
         } else {
             setIsVisible(false)
         }
-    }
-
+    };
 
     return (
         <Formik
@@ -166,7 +172,7 @@ const RegisterExpenses = () => {
                                     }}
                                     width={130}
                                     height={55}
-                                    background_color={theme.colors.neutral_100}
+                                    background_color={selectType?.type === 'entrada' && theme.colors.green_rgba || theme.colors.neutral_25}
                                     border
                                     border_color={selectType?.type === 'entrada' && theme.colors.green || theme.colors.gray_80}
                                     border_width={1}
@@ -192,7 +198,7 @@ const RegisterExpenses = () => {
                                     }}
                                     width={130}
                                     height={55}
-                                    background_color={theme.colors.neutral_100}
+                                    background_color={selectType?.type === 'saida' && theme.colors.red_rgba || theme.colors.neutral_25}
                                     border
                                     border_color={selectType?.type === 'saida' && theme.colors.red_50 || theme.colors.gray_80}
                                     border_width={1}
@@ -212,12 +218,19 @@ const RegisterExpenses = () => {
                         </Box>
 
 
-                        <DropdownSelect
-                            handleOnSelect={(electedItem, index) => {
-                                handleItem(electedItem.title)
-                                setSelectedItem(electedItem.title)
-                            }}
-                        />
+                        {errors.name || errors.value ? null : (
+                            <DropdownSelect
+                                dataSelected={dataOptions}
+                                borderBottomStyle={false}
+                                textPlaceholder='Escolha uma categoria'
+                                dropdownIconPosition='right'
+                                handleOnSelect={(selectedItem, _index) => {
+                                    handleItem(selectedItem.title)
+                                    setSelectedItem(selectedItem.title)
+                                }}
+
+                            />
+                        )}
 
                     </Container>
 
