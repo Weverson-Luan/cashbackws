@@ -3,7 +3,7 @@
  */
 
 interface Props {
-  type: 'entrada' | 'saida';
+  type: 'receive' | 'outings' | 'undefined';
 };
 
 interface DataOptions {
@@ -12,7 +12,18 @@ interface DataOptions {
   value: string;
 }
 
+interface IDateSaveProps {
+    id: string;
+    name: string;
+    category: string;
+    type: 'outings' | 'receive'
+    amount: string;
+    date: string;
+    color?: string;
+    description?: string;
+}
+
 /**
  * EXPORTS
  */
-export { Props, DataOptions };
+export { Props, DataOptions, IDateSaveProps };

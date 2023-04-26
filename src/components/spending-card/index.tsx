@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-
+import { View, Text as TextKKKK } from 'react-native';
+import { formatToBRL } from 'brazilian-values';
 // components
 import { Text } from '@components/text';
 
@@ -22,60 +23,34 @@ import {
     WrapperText,
     WrapperTextFooterDate,
     FlatList,
+    TextNative,
+    WrapperImageProfile,
+    ImageProfile,
+    WrapperValueAndDate,
+    TextNativeValueAndDate,
+    TextDescription,
+    TextTitleDescription,
 } from './styles';
 
-const SpendingCard = ({ testID, ...res }: ISpendingProps) => {
+const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
     const theme = useTheme();
+    // console.log('da', data);
 
-    const data: ICardTypeProps[] = [
-        {
-            id: '1',
-            name: 'Desenvolvimento de sistema',
-            category: 'Vendas',
-            type: 'entrada',
-            value: 'R$ 5.500,00',
-            date: '10/12/2022',
-        },
-        {
-            id: '2',
-            name: 'Teclado Hiper',
-            category: 'Saídas',
-            type: 'saída',
-            value: 'R$ 998,00',
-            date: '16/12/2022',
-        },
-        {
-            id: '3',
-            name: 'Notebook Acer aspire',
-            category: 'Saídas',
-            type: 'saída',
-            value: 'R$ 3.998,00',
-            date: '10/12/2022',
-        },
-    ] as ICardTypeProps[];
     return (
+        //@ts-ignore
         <Container {...res} testID={testID}>
             <Header>
                 <Text
-                    text="Meus Gastos"
-                    fontFamily={theme.fonts.primary_poppins_medium_500}
+                    text="Meus Históricos"
+                    fontFamily={'Poppins-Medium'}
                     color={theme.colors.gray_150}
                     size={17}
                     letterHeight={32}
                     marginTop={40}
                     align="left"
                 />
-                {/* <Text
-                    text="😢"
-                    fontFamily="Raleway-Bold"
-                    color={theme.colors.blue_dark_800}
-                    size={22}
-                    letterHeight={32}
-                    weight="700"
-                    marginTop={50}
-                    align="left"
-                /> */}
             </Header>
+
             <FlatList
                 data={data}
                 keyExtractor={(item: any) => String(item.id)}
@@ -83,17 +58,19 @@ const SpendingCard = ({ testID, ...res }: ISpendingProps) => {
                     <ContainerSpending activeOpacity={0.8}>
                         <HeaderSpending>
                             <Text
-                                text={item.name}
-                                fontFamily={
-                                    theme.fonts.primary_poppins_regular_400
-                                }
+                                text={`${item.category} #01`}
+                                fontFamily={'Poppins-SemiBold'}
                                 color={theme.colors.neutral_25}
                                 size={14}
                                 letterHeight={26}
-                                weight="400"
                                 align="left"
+                                width={100}
                             />
-                            {item.type === 'saída' ? (
+
+                            <TextNative color={theme.colors.neutral_25}>
+                                {item.type === 'receive' ? 'ENTRADA' : 'SAÍDA'}
+                            </TextNative>
+                            {item.type === 'outings' ? (
                                 <CashExitSvg width={22} height={22} />
                             ) : (
                                 <CashSvg width={22} height={22} />
@@ -101,56 +78,96 @@ const SpendingCard = ({ testID, ...res }: ISpendingProps) => {
                         </HeaderSpending>
 
                         <WrapperText>
-                            <Text
-                                text={
-                                    item.type === 'saída'
-                                        ? `${item.value}`
-                                        : item.value
-                                }
-                                fontFamily={
-                                    theme.fonts.primary_poppins_regular_400
-                                }
-                                color={
-                                    item.type === 'saída'
-                                        ? theme.colors.red_50
-                                        : theme.colors.green
-                                }
-                                size={18}
-                                letterHeight={26}
-                                weight="400"
-                                align="left"
-                            />
+                            <WrapperImageProfile>
+                                <ImageProfile
+                                    source={{
+                                        uri: 'https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no',
+                                    }}
+                                />
+                                <View>
+                                    <View
+                                        style={{
+                                            flexDirection: 'row',
+                                            width: '86%',
+                                            alignItems: 'flex-start',
+                                            justifyContent: 'flex-start',
+                                        }}>
+                                        <Text
+                                            text={'Nome:'}
+                                            fontFamily={'Poppins-Medium'}
+                                            color={theme.colors.gray_150}
+                                            size={14}
+                                            letterHeight={26}
+                                            weight="400"
+                                            align="left"
+                                            width={25}
+                                        />
+                                        <Text
+                                            text={'Weverson'}
+                                            fontFamily={'Poppins-Regular'}
+                                            color={theme.colors.gray_50}
+                                            size={14}
+                                            letterHeight={26}
+                                            weight="400"
+                                            align="left"
+                                        />
+                                    </View>
 
+                                    <View
+                                        style={{
+                                            width: '86%',
+                                            flexDirection: 'row',
+                                            paddingLeft: 6,
+                                            alignItems: 'flex-start',
+                                            justifyContent: 'flex-start',
+                                        }}>
+                                        <TextTitleDescription
+                                            color={theme.colors.gray_150}>
+                                            Descrição:
+                                        </TextTitleDescription>
+
+                                        <TextDescription
+                                            color={theme.colors.gray_50}>
+                                            {`${String(item.name).substring(
+                                                0,
+                                                16,
+                                            )}...`}
+                                        </TextDescription>
+                                    </View>
+                                </View>
+                            </WrapperImageProfile>
                             <WrapperTextFooterDate>
                                 <Text
-                                    text={
-                                        item.category === 'Saídas'
-                                            ? `- ${item.category}`
-                                            : ` ${item.value}`
-                                    }
-                                    fontFamily={
-                                        theme.fonts.primary_poppins_regular_400
-                                    }
-                                    color={theme.colors.gray_80}
+                                    text={'VALOR:'}
+                                    fontFamily={'Poppins-Medium'}
+                                    color={theme.colors.gray_150}
                                     size={14}
                                     letterHeight={26}
-                                    weight="300"
+                                    weight="400"
                                     align="left"
                                 />
-
                                 <Text
-                                    text="22/12/2022"
-                                    fontFamily={
-                                        theme.fonts.primary_poppins_regular_400
-                                    }
-                                    color={theme.colors.gray_80}
+                                    text={'DATA CRIAÇÃO'}
+                                    fontFamily={'Poppins-Medium'}
+                                    color={theme.colors.gray_150}
                                     size={14}
                                     letterHeight={26}
-                                    weight="300"
+                                    weight="400"
                                     align="left"
                                 />
                             </WrapperTextFooterDate>
                         </WrapperText>
+
+                        <WrapperValueAndDate>
+                            <TextNativeValueAndDate
+                                color={theme.colors.gray_50}>
+                                {formatToBRL(item.amount)}
+                            </TextNativeValueAndDate>
+                            <TextNativeValueAndDate
+                                color={theme.colors.gray_50}>
+                                {item.date} AM
+                            </TextNativeValueAndDate>
+                        </WrapperValueAndDate>
                     </ContainerSpending>
                 )}
             />

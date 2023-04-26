@@ -6,6 +6,7 @@ import { ViewProps } from 'react-native';
 
 interface ISpendingProps extends ViewProps {
     testID?: string;
+    data?: any
 }
 
 interface ICardTypeProps {

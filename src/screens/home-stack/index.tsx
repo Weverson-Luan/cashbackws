@@ -1,16 +1,16 @@
 /**
  * IMPORT
  */
-import React, { useCallback } from 'react';
-
+import React, { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 // libs
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 // components
 import { CardType } from '@components/card-type';
 import { Profile } from '@components/profile';
 import { SpendingCard } from '@components/spending-card';
-
+import { Text } from '@components/text';
 // assets
 import LogoutSvg from '../../assets/icons-svg/power.svg';
 
@@ -26,6 +26,8 @@ import {
     WrapperContentType,
     FlatList,
 } from './styles';
+import { getDataStore } from 'src/services/storage/async-storage';
+import { useTheme } from 'styled-components';
 
 interface IHomeStackProps {
     onPressNavigationTesting: () => void; // function for testing
@@ -34,6 +36,9 @@ interface IHomeStackProps {
 
 const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
     const navigation = useNavigation();
+    const theme = useTheme();
+    const [dataAccounts, setDataAccounts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
 
     const data = [
         {
@@ -64,6 +69,27 @@ const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
             navigation.navigate('Sign');
         }
     }, []);
+
+    const handleAllData = async () => {
+        setLoading(true);
+        const responseStorage = await getDataStore('@accounts');
+
+        if (responseStorage !== undefined) {
+            const responseFormatted = JSON.parse(responseStorage);
+            setDataAccounts(responseFormatted);
+        }
+    };
+
+    useFocusEffect(
+        useCallback(() => {
+            handleAllData();
+
+            setTimeout(() => {
+                setLoading(false);
+            }, 4000);
+        }, [dataAccounts.length]),
+    );
+
     return (
         <Container>
             <Header>
@@ -81,25 +107,50 @@ const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
                 </WrapperIcon>
             </Header>
 
-            <ContainerContent>
-                <SpendingCard testID="cards-type" />
-            </ContainerContent>
+            {!loading && (
+                <ContainerContent>
+                    <SpendingCard testID="cards-type" data={dataAccounts} />
+                </ContainerContent>
+            )}
 
-            <WrapperContentType>
-                <FlatList
-                    testID="expense-list"
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    data={data}
-                    keyExtractor={(item: any) => String(item.id)}
-                    renderItem={({ item }: any) => (
-                        <CardType
-                            isTypeCard={item.type === 'Total'}
-                            data={item}
-                        />
-                    )}
-                />
-            </WrapperContentType>
+            {loading ? (
+                <View
+                    style={{
+                        flex: 1,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                    <Text
+                        text="Carregando..."
+                        fontFamily={'Poppins-Regular'}
+                        color={theme.colors.gray_150}
+                        size={17}
+                        letterHeight={32}
+                        marginTop={40}
+                        align="left"
+                    />
+                    <ActivityIndicator
+                        size={28}
+                        color={theme.colors.blue_dark_800}
+                    />
+                </View>
+            ) : (
+                <WrapperContentType>
+                    <FlatList
+                        testID="expense-list"
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={data}
+                        keyExtractor={(item: any) => String(item.id)}
+                        renderItem={({ item }: any) => (
+                            <CardType
+                                isTypeCard={item.type === 'Total'}
+                                data={item}
+                            />
+                        )}
+                    />
+                </WrapperContentType>
+            )}
         </Container>
     );
 };

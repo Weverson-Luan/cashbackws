@@ -2,7 +2,7 @@ export interface RootStackParamList {
     Presentation: undefined;
     Sign: undefined;
     HomeStack: undefined;
-    HomeBottomTab: undefined;
+    HomeBottomTabs: undefined;
 }
 
 declare global {
