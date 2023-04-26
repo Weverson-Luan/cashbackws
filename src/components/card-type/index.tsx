@@ -29,7 +29,7 @@ const CardType = (cardData: ICardTypeProps) => {
                 <Text
                     testID="title-card-type"
                     text={cardData.data.type}
-                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
                             ? theme.colors.neutral_25
@@ -60,7 +60,7 @@ const CardType = (cardData: ICardTypeProps) => {
                 <Text
                     testID="text-value-card-type"
                     text={cardData.data.value}
-                    fontFamily={theme.fonts.primary_poppins_medium_500}
+                    fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
                             ? theme.colors.neutral_25
@@ -82,7 +82,7 @@ const CardType = (cardData: ICardTypeProps) => {
                                       : 'entrada'
                               } dia ${cardData.data.created_at}`
                     }`}
-                    fontFamily={theme.fonts.primary_poppins_regular_400}
+                    fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
                             ? theme.colors.neutral_25

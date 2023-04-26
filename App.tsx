@@ -10,7 +10,10 @@ const App: React.FC = () => {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <StatusBar barStyle={'dark-content'} backgroundColor={'#2D9BB2'} />
+                <StatusBar
+                    barStyle={'light-content'}
+                    backgroundColor={'#2D9BB2'}
+                />
                 <AppRoutes />
             </ThemeProvider>
         </>

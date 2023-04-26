@@ -32,7 +32,7 @@ const ContainerSpending = styled.TouchableOpacity.attrs({
     elevation: 13,
 })`
     width: ${RFValue(300)}px;
-    height: ${RFValue(120)}px;
+    height: ${RFValue(162)}px;
     background-color: ${({ theme }) => theme.colors.neutral_25};
     border-radius: 8px;
     margin-left: ${RFValue(2)}px;
@@ -46,12 +46,13 @@ const HeaderSpending = styled.View`
     align-items: flex-start;
     justify-content: space-around;
     background-color: ${({ theme }) => theme.colors.blue_cyan_200};
-    padding-left: ${RFValue(12)}px;
-    padding-right: ${RFValue(12)}px;
+    padding-left: ${RFValue(24)}px;
+    padding-right: ${RFValue(24)}px;
     padding-top: ${RFValue(4)}px;
 
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+
 `;
 
 const WrapperText = styled.View`
@@ -64,11 +65,75 @@ const WrapperText = styled.View`
     background: transparent;
 `;
 
+const WrapperImageProfile = styled.View`
+    width: 90%;
+    height: 58px;
+    flex-direction: row;
+    margin-left: ${RFValue(6)}px;
+    background-color: transparent;
+`;
+
+const ImageProfile = styled.Image`
+    width: 58px;
+    height:58px;
+`;
+
 const WrapperTextFooterDate = styled.View`
-    width: 70%;
+    width: 55%;
     flex-direction: row;
     margin-top: ${RFValue(12)}px;
+    padding-right: ${RFValue(24)}px;
 `;
+
+interface IpropsColor{
+    color: string;
+}
+const TextNative = styled.Text<IpropsColor>`
+    font-size: ${RFValue(14)}px;
+    color: ${({color})=> color};
+    margin-right: 52px;
+    margin-top: 2px;
+    line-height: 26px;
+    font-family:  ${({theme})=> theme.fonts.primary_poppins_semiBold_600};
+`;
+
+const TextTitleDescription = styled.Text<IpropsColor>`
+    font-size: ${RFValue(14)}px;
+    color: ${({color})=> color};
+    margin-right: 2px;
+    margin-top: 2px;
+    line-height: 26px;
+    font-family:  ${({theme})=> theme.fonts.primary_poppins_medium_500};
+`;
+
+const TextDescription = styled.Text<IpropsColor>`
+    font-size: ${RFValue(14)}px;
+    color: ${({color})=> color};
+    margin-left: 6px;
+    margin-top: 2px;
+    line-height: 26px;
+    font-family:  ${({theme})=> theme.fonts.primary_poppins_regular_400};
+
+`;
+
+const TextNativeValueAndDate = styled.Text<IpropsColor>`
+    font-size: ${RFValue(14)}px;
+    color: ${({color})=> color};
+    margin-top: 2px;
+    line-height: 26px;
+    font-family:  ${({theme})=> theme.fonts.primary_poppins_regular_400};
+`;
+
+
+const WrapperValueAndDate = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: ${RFValue(12)}px;
+    padding-right: ${RFValue(12)}px;
+`;
+
+
 /**
  * EXPORT
  */
@@ -80,4 +145,11 @@ export {
     HeaderSpending,
     WrapperText,
     WrapperTextFooterDate,
+    TextNative,
+    WrapperImageProfile,
+    ImageProfile,
+    WrapperValueAndDate,
+    TextTitleDescription,
+    TextDescription,
+    TextNativeValueAndDate
 };

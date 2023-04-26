@@ -10,10 +10,11 @@
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "dependencies": {
+        "@react-native-async-storage/async-storage": "^1.18.1",
         "@react-navigation/bottom-tabs": "^6.5.2",
         "@react-navigation/native": "^6.1.1",
         "@react-navigation/native-stack": "^6.9.7",
-        "@types/styled-components-react-native": "5.1.6",
+        "@types/styled-components-react-native": "5.2.0",
         "@types/styled-system": "^5.1.16",
         "brazilian-values": "^0.12.0",
         "formik": "^2.2.9",
@@ -28,9 +29,11 @@
         "react-native-screens": "^3.18.2",
         "react-native-select-dropdown": "^3.3.2",
         "react-native-svg": "^13.6.0",
+        "react-native-uuid": "^2.0.1",
         "react-native-vector-icons": "^9.2.0",
         "styled-components": "^5.3.6",
         "styled-system": "^5.1.5",
+        "victory-native": "^36.6.8",
         "yup": "^1.0.2"
     },
     "devDependencies": {
