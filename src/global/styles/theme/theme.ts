@@ -18,10 +18,13 @@ export default {
         gray_95: '#969CB3',
         gray_150: '#5C5C5C',
         gray_200: '#4B4B4B',
+        gray_300: '#969CB2',
         green: '#12A454',
         green_380: '#38D61E',
+        green_rgba: 'rgba(28, 245, 12, 0.1)',
         red_100: '#FF0000',
         red_50: '#D6291E',
+        red_rgba: 'rgba(251, 26, 41, 0.1)',
         purple_300: '#3416AD',
         transparent: 'transparent'
     },

@@ -4,10 +4,6 @@
 
 import { ViewProps } from 'react-native';
 
-interface ISpendingProps extends ViewProps {
-    testID?: string;
-}
-
 interface ICardTypeProps {
     id: string;
     name: string;
@@ -17,6 +13,10 @@ interface ICardTypeProps {
     date: string;
 }
 
+interface ISpendingProps extends ViewProps {
+    testID?: string;
+    data: ICardTypeProps[]
+}
 /**
  * EXPORTS
  */

@@ -16,32 +16,30 @@ import { Text } from '@components/text';
 // styles
 import { ButtonArrowLeft, Container } from './styles';
 import { Box } from '@components/box';
-import { StatusBar } from 'react-native';
+import { IHeaderProps } from './index.d';
 
-const Header = () => {
-  const theme = useTheme();
-  const { goBack } = useNavigation();
+const Header = ({ title, onClick }: IHeaderProps) => {
+    const theme = useTheme();
+    const { goBack } = useNavigation();
 
-  return (
-    <Container>
-      <StatusBar barStyle={'dark-content'} backgroundColor={'#2D9BB2'} />
-      <ButtonArrowLeft activeOpacity={0.7} onPress={() => goBack()}>
-        <ArrowLeft size={26} color={"#fff"} />
-      </ButtonArrowLeft>
+    return (
+        <Container>
+            <ButtonArrowLeft activeOpacity={0.7} onPress={() => goBack()}>
+                <ArrowLeft size={26} color={'#fff'} />
+            </ButtonArrowLeft>
 
-      <Box width={'80%'} backgroundColor={'transparent'}>
-        <Text
-          text="Registro"
-          fontFamily="Poppins-SemiBold"
-          color={theme.colors.neutral_25}
-          size={24}
-          letterHeight={36}
-          weight="500"
-
-        />
-      </Box>
-    </Container>
-  );
+            <Box width={'80%'} backgroundColor={'transparent'}>
+                <Text
+                    text={title ? title : 'Sem titulo'}
+                    fontFamily="Poppins-SemiBold"
+                    color={theme.colors.neutral_25}
+                    size={18}
+                    letterHeight={36}
+                    weight="500"
+                />
+            </Box>
+        </Container>
+    );
 };
 
 /**
