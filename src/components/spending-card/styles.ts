@@ -6,11 +6,18 @@ import styled from 'styled-components/native';
 
 const Container = styled.View`
     width: 100%;
+    flex: 1;
     align-items: center;
     justify-content: center;
     padding: ${RFValue(6)}px;
     margin-bottom: ${RFValue(36)}px;
 `;
+
+const WrapperLoading = styled.View.attrs({
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+})``;
 
 const Header = styled.View`
     width: 100%;
@@ -79,7 +86,7 @@ const ImageProfile = styled.Image`
 `;
 
 const WrapperTextFooterDate = styled.View`
-    width: 55%;
+    width: 54%;
     flex-direction: row;
     margin-top: ${RFValue(12)}px;
     padding-right: ${RFValue(24)}px;
@@ -139,6 +146,7 @@ const WrapperValueAndDate = styled.View`
  */
 export {
     Container,
+    WrapperLoading,
     Header,
     FlatList,
     ContainerSpending,

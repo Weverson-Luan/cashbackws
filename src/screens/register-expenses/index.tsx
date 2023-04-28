@@ -1,7 +1,8 @@
 /**
  * IMPORT
  */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 import {
     StatusBar,
@@ -27,23 +28,21 @@ import { Header } from '@components/header';
 import { Input } from '@components/form/input';
 import { Text } from '@components/text';
 
-import {
-    storeData,
-    getDataStore,
-    removeDataStore,
-} from 'src/services/storage/async-storage';
-
-// styles
-import { Container } from './styles';
+// services / storage
+import { storeData, getDataStore } from 'src/services/storage/async-storage';
 
 // schema
 import { initialValue, schemaRegister } from './schema';
 
 // typings
 import { Props, DataOptions, IDateSaveProps } from './index.d';
-import { formatToDate, formatToDateTime } from 'brazilian-values';
-import { useNavigation } from '@react-navigation/native';
+
+// utils
 import { categories } from 'src/utils/categories';
+
+// styles
+import { Container } from './styles';
+
 const RegisterExpenses = () => {
     const theme = useTheme();
     const navigation = useNavigation();
@@ -59,9 +58,6 @@ const RegisterExpenses = () => {
 
     const [dataAccounts, setDataAccounts] = useState<any[]>([]);
 
-    const [namee, setName] = useState<string>('');
-    const [valuee, setValue] = useState<string>('');
-
     const dataOptions = [
         { id: '5', title: 'Alimentação', value: '' },
         { id: '9', title: 'Compras', value: '' },
@@ -73,7 +69,7 @@ const RegisterExpenses = () => {
         { id: '2', title: 'Empréstimo 15% - Saia do sufoco', value: '' },
     ] as DataOptions[];
 
-    const handleItem = (nameTypeSelected: string) => {
+    const handleSelectItem = (nameTypeSelected: string) => {
         if (
             nameTypeSelected === 'Empréstimo 15% - Saia do sufoco' ||
             nameTypeSelected === 'Empréstimo 10% - Saia do aperto'
@@ -86,14 +82,13 @@ const RegisterExpenses = () => {
 
     const handleRegisterNewItem = async (name, value) => {
         setLoading(true);
-        const formattedDate = formatToDateTime(new Date());
 
         const categoryFound = categories.find(
             item => item.name === selectedItemCategory,
         );
         const validateType =
             (categoryFound?.key === 'salary' && 'receive') ||
-            (categoryFound?.key === 'loan' && 'receive') ||
+            (categoryFound?.key === 'loan' && 'outings') ||
             (categoryFound?.key === 'leisure' && 'outings') ||
             (categoryFound?.key === 'moto' && 'outings') ||
             (categoryFound?.key === 'food' && 'outings') ||
@@ -103,11 +98,12 @@ const RegisterExpenses = () => {
             id: uuid.v4(),
             amount: value,
             category: categoryFound?.name,
-            date: formattedDate,
+            date: new Date(),
             name,
             type: validateType,
             color: categoryFound?.color,
             description: 'descrição default...',
+            accountNumber: dataAccounts.length + 1,
         } as IDateSaveProps;
 
         const tranformData = [data, ...dataAccounts];
@@ -120,18 +116,17 @@ const RegisterExpenses = () => {
                 setSelectType({ type: 'undefined' });
                 setSelectedItemCategory('');
                 navigation.navigate('HomeBottomTabs');
-            }, 3000);
+            }, 2000);
         } else {
             Alert.alert(
                 'Aviso',
-                'Você selecioniou o tipo invalido por favor corriga ENTRADA OU SAIDA',
+                'Você selecionou o tipo inválido por favor corriga ENTRADA OU SAIDA',
             );
             setLoading(false);
         }
     };
 
     const handleAllData = async () => {
-        // await removeDataStore('@accounts');
         const responseStorage = await getDataStore('@accounts');
 
         if (responseStorage !== undefined) {
@@ -139,9 +134,12 @@ const RegisterExpenses = () => {
             setDataAccounts(responseFormatted);
         }
     };
-    useEffect(() => {
-        handleAllData();
-    }, []);
+
+    useFocusEffect(
+        useCallback(() => {
+            handleAllData();
+        }, [dataAccounts.length]),
+    );
 
     return (
         <>
@@ -149,10 +147,8 @@ const RegisterExpenses = () => {
             <Formik
                 initialValues={initialValue}
                 onSubmit={(values, { resetForm }) => {
-                    setName(values.name);
-                    setValue(values.value);
                     handleRegisterNewItem(values.name, values.value);
-                    resetForm();
+                    loading && resetForm();
                 }}
                 validationSchema={schemaRegister}>
                 {({
@@ -164,7 +160,7 @@ const RegisterExpenses = () => {
                 }) => (
                     <>
                         <Container>
-                            <Header title="Registro" />
+                            <Header title="Cadastro" />
 
                             <Box width={'100%'} pl={4} pr={4} mt={3}>
                                 <>
@@ -350,7 +346,7 @@ const RegisterExpenses = () => {
                                     textPlaceholder="Escolha uma categoria"
                                     dropdownIconPosition="right"
                                     handleOnSelect={(selectedItem, _index) => {
-                                        handleItem(selectedItem.title);
+                                        handleSelectItem(selectedItem.title);
                                         setSelectedItemCategory(
                                             selectedItem.title,
                                         );

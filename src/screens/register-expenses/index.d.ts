@@ -18,9 +18,10 @@ interface IDateSaveProps {
     category: string;
     type: 'outings' | 'receive'
     amount: string;
-    date: string;
+    date: string | Date;
     color?: string;
     description?: string;
+    accountNumber: number;
 }
 
 /**

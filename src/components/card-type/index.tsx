@@ -1,8 +1,9 @@
 /**
  * IMPORT
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components/native';
+import { formatToBRL } from 'brazilian-values';
 
 // components
 import { Text } from '@components/text';
@@ -19,6 +20,7 @@ import { Container, Header, WrapperText } from './styles';
 
 const CardType = (cardData: ICardTypeProps) => {
     const theme = useTheme();
+    const [totalEntradas, setTotalEntradas] = useState(0);
 
     return (
         <Container
@@ -59,7 +61,7 @@ const CardType = (cardData: ICardTypeProps) => {
             <WrapperText>
                 <Text
                     testID="text-value-card-type"
-                    text={cardData.data.value}
+                    text={formatToBRL(cardData.data.value)}
                     fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
@@ -75,7 +77,7 @@ const CardType = (cardData: ICardTypeProps) => {
                     testID="text-date-card-type"
                     text={`${
                         cardData.data.type === 'Total'
-                            ? '01 a 17 de dezembro'
+                            ? ''
                             : `Última ${
                                   cardData.data.type === 'Saídas'
                                       ? 'saída'
@@ -88,7 +90,7 @@ const CardType = (cardData: ICardTypeProps) => {
                             ? theme.colors.neutral_25
                             : theme.colors.gray_80
                     }
-                    size={13}
+                    size={12}
                     letterHeight={26}
                     weight="300"
                     align="left"

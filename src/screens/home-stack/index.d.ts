@@ -3,13 +3,18 @@
  */
 
 interface ICardTypeProps {
-    id: string;
-    type: string;
-    value: string;
-    created_at: string;
+    id?: string;
+    type?: string;
+    value?: string;
+    created_at?: string;
 }
 
+
+interface IHomeStackProps {
+    onPressNavigationTesting: () => void; // function for testing
+    testing?: boolean;
+}
 /**
  * EXPORTS
  */
-export { ICardTypeProps };
+export { ICardTypeProps, IHomeStackProps };

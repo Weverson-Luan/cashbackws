@@ -10,6 +10,7 @@ interface ICardTypeProps {
         created_at: string;
     };
     isTypeCard: boolean;
+
 }
 
 /**

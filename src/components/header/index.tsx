@@ -33,7 +33,7 @@ const Header = ({ title, onClick }: IHeaderProps) => {
                     text={title ? title : 'Sem titulo'}
                     fontFamily="Poppins-SemiBold"
                     color={theme.colors.neutral_25}
-                    size={24}
+                    size={18}
                     letterHeight={36}
                     weight="500"
                 />

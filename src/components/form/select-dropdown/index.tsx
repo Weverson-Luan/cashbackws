@@ -31,7 +31,6 @@ const DropdownSelect = ({
                     <SelectDropdown
                         data={dataSelected}
                         onSelect={(selectedItem, index) => {
-                            // console.log(selectedItem, index);
                             handleOnSelect(selectedItem, index);
                         }}
                         defaultButtonText={
