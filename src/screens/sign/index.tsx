@@ -41,7 +41,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
         if (testing) {
             return onPressNavigationTesting();
         }
-        return navigate('HomeBottomTabs');
+        return navigate('Login');
     };
 
     return (
@@ -69,7 +69,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                 <Text
                     testID="app-description"
                     text="Faça seu login com
-                    uma conta google ou github abaixo"
+                    uma conta ou se registre."
                     fontFamily="Poppins-SemiBold"
                     color={theme.colors.neutral_100}
                     size={16}
@@ -97,7 +97,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                         marginBottom={16}>
                         <GoogleSvg width={24} height={24} />
                         <Text
-                            text="Entrar com Google"
+                            text="Fazer Login"
                             color={theme.colors.black_800}
                             size={16}
                             letterHeight={24}
@@ -119,7 +119,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                         <GithubSvg width={24} height={24} />
 
                         <Text
-                            text="Entrar com Github"
+                            text="Cadastre-se"
                             color={theme.colors.black_800}
                             size={16}
                             letterHeight={24}
@@ -131,7 +131,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
 
                 <WrapperAppVersion>
                     <Text
-                        text="versão 1.0.0"
+                        text="Versão 1.0.0"
                         color={theme.colors.neutral_100}
                         size={12}
                         letterHeight={24}

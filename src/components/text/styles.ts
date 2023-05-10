@@ -7,7 +7,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { ITextProps } from './index.d';
 
 const TextNative = styled(Text)<ITextProps>`
-    color: ${({ color }: any) => color || '#000'};
+    color: ${({ color }: any) => color || '#41414d'};
     font-size: ${({ size = 16 }: any) => `${RFValue(size)}px`};
     width: ${({ width = 100 }: any) => `${width}%`};
     text-align: ${({ align = 'center' }: any) => align};

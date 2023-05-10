@@ -49,6 +49,10 @@ const ButtonIcon = styled.TouchableOpacity`
   position: absolute;
   top: 18px;
   left: 6px;
+  border-right-width: 1px;
+  border-color: #cdcd;
+  padding-right: 6px;
+
 `;
 
 export {

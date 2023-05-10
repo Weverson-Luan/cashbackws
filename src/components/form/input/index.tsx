@@ -3,8 +3,14 @@
  */
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { TextInputProps, TouchableOpacity } from "react-native";
-import { NotePencil, CurrencyDollar } from "phosphor-react-native";
+import { TextInputProps, TouchableOpacity } from 'react-native';
+import {
+    NotePencil,
+    CurrencyDollar,
+    Envelope,
+    Clock,
+    LockKey,
+} from 'phosphor-react-native';
 // components
 import { Text } from '@components/text';
 
@@ -19,17 +25,15 @@ import { Box } from '@components/box';
 
 interface IInputProps extends InputProps {
     nameIcon?: string;
-    label?: string
+    label?: string;
 }
 
 const Input = ({ nameIcon, label, ...props }: IInputProps) => {
-
     const styleProps: InputProps = props;
     const theme = useTheme();
     return (
         <>
             {label && (
-
                 <Text
                     text={`${label}:`}
                     fontFamily="Poppins-Regular"
@@ -40,7 +44,6 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                     weight="500"
                     marginLeft={-4}
                     marginBottom={2}
-
                 />
             )}
             <Box>
@@ -48,17 +51,34 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                     <BoxStyles {...styleProps} />
                     {nameIcon === 'name' && (
                         <ButtonIcon>
-                            <NotePencil size={26} color={theme.colors.gray_80} />
+                            <NotePencil
+                                size={26}
+                                color={theme.colors.gray_80}
+                            />
                         </ButtonIcon>
                     )}
 
                     {nameIcon === 'money' && (
                         <ButtonIcon>
-                            <CurrencyDollar size={26} color={theme.colors.gray_80} />
+                            <CurrencyDollar
+                                size={26}
+                                color={theme.colors.gray_80}
+                            />
+                        </ButtonIcon>
+                    )}
+
+                    {nameIcon === 'email' && (
+                        <ButtonIcon>
+                            <Envelope size={26} color={theme.colors.gray_80} />
+                        </ButtonIcon>
+                    )}
+
+                    {nameIcon === 'password' && (
+                        <ButtonIcon>
+                            <LockKey size={26} color={theme.colors.gray_80} />
                         </ButtonIcon>
                     )}
                 </>
-
             </Box>
         </>
     );

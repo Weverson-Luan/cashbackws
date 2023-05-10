@@ -5,6 +5,7 @@ export const categories = [
     { key: 'salary', name: 'Free Lancer', icon: 'dollar-sign', color: '#8FBC8F' },
     { key: 'moto', name: 'Moto', icon: 'crosshair', color: '#E83F5B' },
     { key: 'leisure', name: 'Lazer', icon: 'heart', color: '#26195C' },
+    { key: 'outing', name: 'Retirada', icon: 'heart', color: '#9C001A' },
     { key: 'loan', name: 'Empréstimo 15% - Saia do sufoco', icon: 'book', color: '#9C001A' },
     { key: 'loan', name: 'Empréstimo 10% - Saia do aperto', icon: 'book', color: '#9C001A' },
   ];

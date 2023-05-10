@@ -10,8 +10,7 @@ interface IContainerTypeCardProps {
 const Container = styled.TouchableOpacity<IContainerTypeCardProps>`
     width: ${RFValue(300)}px;
     height: ${RFValue(160)}px;
-    background-color: ${({ theme, isTypeCard }) =>
-        isTypeCard ? theme.colors.purple_300 : theme.colors.neutral_25};
+    background-color: ${({ theme, isTypeCard }) => theme.colors.neutral_25};
     border-radius: 6px;
     margin-left: ${RFValue(2)}px;
     margin-right: ${RFValue(18)}px;
@@ -23,7 +22,7 @@ const Header = styled.View<IContainerTypeCardProps>`
     align-items: flex-start;
     justify-content: space-around;
     background-color: ${({ theme, isTypeCard }) =>
-        isTypeCard ? theme.colors.purple_300 : theme.colors.neutral_25};
+        theme.colors.neutral_25};
     border-radius: 6px;
     padding: ${RFValue(22)}px;
 `;

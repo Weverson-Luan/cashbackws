@@ -87,6 +87,7 @@ const RegisterExpenses = () => {
             item => item.name === selectedItemCategory,
         );
         const validateType =
+            (categoryFound?.key === 'outing' && 'outings') ||
             (categoryFound?.key === 'salary' && 'receive') ||
             (categoryFound?.key === 'loan' && 'outings') ||
             (categoryFound?.key === 'leisure' && 'outings') ||
@@ -509,7 +510,7 @@ const RegisterExpenses = () => {
                                             color={theme.colors.neutral_25}
                                         />
                                         <Text
-                                            text="ENVIAR"
+                                            text="REGISTRAR"
                                             fontFamily="Poppins-SemiBold"
                                             color={theme.colors.neutral_25}
                                             size={16}

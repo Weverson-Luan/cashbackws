@@ -34,7 +34,7 @@ const CardType = (cardData: ICardTypeProps) => {
                     fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
-                            ? theme.colors.neutral_25
+                            ? theme.colors.gray_150
                             : theme.colors.gray_150
                     }
                     size={18}
@@ -65,7 +65,7 @@ const CardType = (cardData: ICardTypeProps) => {
                     fontFamily={'Poppins-Medium'}
                     color={
                         cardData.data.type === 'Total'
-                            ? theme.colors.neutral_25
+                            ? theme.colors.gray_150
                             : theme.colors.gray_150
                     }
                     size={18}

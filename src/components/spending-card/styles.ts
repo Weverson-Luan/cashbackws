@@ -86,7 +86,7 @@ const ImageProfile = styled.Image`
 `;
 
 const WrapperTextFooterDate = styled.View`
-    width: 54%;
+    width: 60%;
     flex-direction: row;
     margin-top: ${RFValue(12)}px;
     padding-right: ${RFValue(24)}px;

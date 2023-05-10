@@ -4,12 +4,16 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
+const Main = styled.View`
+    background-color: ${({ theme }) => theme.colors.neutral_25};
+`;
 const Container = styled.View`
     width: 100%;
     flex: 1;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-    background-color: ${({ theme }) => theme.colors.blue_cyan_200};
+    background-color: ${({ theme }) => theme.colors.neutral_25};
+    padding-left: 28px;
 `;
 
 const WrapperLogo = styled.View`
@@ -71,6 +75,7 @@ const WrapperAppVersion = styled.View`
  * EXPORT
  */
 export {
+    Main,
     Container,
     WrapperLogo,
     WrapperTitle,

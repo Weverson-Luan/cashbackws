@@ -6,6 +6,7 @@ import { Sign } from '@screens/sign';
 
 //bottom Tabs
 import { BottomTabsAuth } from './index.bottomTabs';
+import { Login } from '@screens/login';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ function AppRoutesOpen() {
                 // @ts-expect-error:next-line
                 component={Sign}
             />
-            {/* <Stack.Screen name="HomeStack" component={BottomTabsAuth} /> */}
+            <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
     );
 }

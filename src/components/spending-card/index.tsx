@@ -35,6 +35,7 @@ import {
     TextDescription,
     TextTitleDescription,
 } from './styles';
+import { handleDateFormatting } from 'src/utils/formated-date';
 
 const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
     const theme = useTheme();
@@ -187,7 +188,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                 <TextNativeValueAndDate
                                     style={{ marginRight: 14 }}
                                     color={theme.colors.gray_50}>
-                                    {format(new Date(item.date), 'Pp')}
+                                    {handleDateFormatting(new Date(item.date))}
                                 </TextNativeValueAndDate>
                             </WrapperValueAndDate>
                         </ContainerSpending>
