@@ -1,7 +1,7 @@
 /**
  * IMPORT
  */
-import React from 'react';
+import React, { useState } from 'react';
 
 // libs
 import { useTheme } from 'styled-components/native';
@@ -35,6 +35,12 @@ import { Input } from '@components/form/input';
 const Login = () => {
     const theme = useTheme();
     const { navigate } = useNavigation();
+
+    const [inputValueIsFocused, setInputValueIsFocused] =
+        useState<boolean>(false);
+
+    const [inputValueIsFocusedPassword, setInputValueIsFocusedPassword] =
+        useState<boolean>(false);
 
     return (
         <>
@@ -76,14 +82,18 @@ const Login = () => {
                         width={'100%'}
                         height={64}
                         border={1}
-                        borderColor={'neutral_100'}
+                        borderColor={
+                            inputValueIsFocused
+                                ? 'blue_cyan_200'
+                                : 'neutral_100'
+                        }
                         borderRadius={'six'}
                         fontSize={18}
                         placeholder={`E-mail`}
                         placeholderTextColor={theme.colors.gray_80}
-                        onBlur={() => {}}
+                        onBlur={() => setInputValueIsFocused(false)}
                         onChangeText={() => {}}
-                        onFocus={() => {}}
+                        onFocus={() => setInputValueIsFocused(true)}
                         keyboardType={'default'}
                         backgroundColor={'neutral_25'}
                         pl={48}
@@ -97,14 +107,18 @@ const Login = () => {
                         width={'100%'}
                         height={64}
                         border={1}
-                        borderColor={'neutral_100'}
+                        borderColor={
+                            inputValueIsFocusedPassword
+                                ? 'blue_cyan_200'
+                                : 'neutral_100'
+                        }
                         borderRadius={'six'}
                         fontSize={18}
                         placeholder={`Senha`}
                         placeholderTextColor={theme.colors.gray_80}
-                        onBlur={() => {}}
+                        onBlur={() => setInputValueIsFocusedPassword(false)}
                         onChangeText={() => {}}
-                        onFocus={() => {}}
+                        onFocus={() => setInputValueIsFocusedPassword(true)}
                         keyboardType={'default'}
                         backgroundColor={'neutral_25'}
                         pl={48}
