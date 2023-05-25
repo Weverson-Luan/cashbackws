@@ -11,7 +11,7 @@ interface ICardTypeProps {
 
 
 interface IHomeStackProps {
-    onPressNavigationTesting: () => void; // function for testing
+    onPressNavigationTesting?: () => void; // function for testing
     testing?: boolean;
 }
 /**

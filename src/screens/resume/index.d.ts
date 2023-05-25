@@ -3,6 +3,7 @@
  */
 
 interface IDateSaveProps {
+    totalFormatted: string | number;
     id: string;
     name: string;
     category: string;

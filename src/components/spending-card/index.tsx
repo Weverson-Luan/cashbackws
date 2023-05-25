@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-import { View } from 'react-native';
+import { View, Text as TextNatives } from 'react-native';
 import { formatToBRL } from 'brazilian-values';
 import { format } from 'date-fns';
 
@@ -36,9 +36,11 @@ import {
     TextTitleDescription,
 } from './styles';
 import { handleDateFormatting } from 'src/utils/formated-date';
+import { useAuth } from '@hooks/use-hook';
 
 const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
     const theme = useTheme();
+    const { user } = useAuth();
     return (
         //@ts-ignore
         <Container {...res} testID={testID}>
@@ -69,7 +71,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                         10,
                                     )} #${
                                         item?.accountNumber
-                                            ? item.accountNumber < 9
+                                            ? item.accountNumber <= 9
                                                 ? `0${item.accountNumber}`
                                                 : item.accountNumber
                                             : ''
@@ -98,7 +100,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                 <WrapperImageProfile>
                                     <ImageProfile
                                         source={{
-                                            uri: 'https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no',
+                                            uri: 'https://img2.gratispng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg',
                                         }}
                                     />
                                     <View>
@@ -108,6 +110,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                                 width: '86%',
                                                 alignItems: 'flex-start',
                                                 justifyContent: 'flex-start',
+                                                marginLeft: 12,
                                             }}>
                                             <Text
                                                 text={'Nome:'}
@@ -120,7 +123,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                                 width={25}
                                             />
                                             <Text
-                                                text={'Weverson'}
+                                                text={user.name}
                                                 fontFamily={'Poppins-Regular'}
                                                 color={theme.colors.gray_50}
                                                 size={14}
@@ -137,6 +140,7 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                                 paddingLeft: 6,
                                                 alignItems: 'flex-start',
                                                 justifyContent: 'flex-start',
+                                                marginLeft: 6,
                                             }}>
                                             <TextTitleDescription
                                                 color={theme.colors.gray_150}>
@@ -158,28 +162,42 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                         </View>
                                     </View>
                                 </WrapperImageProfile>
-                                <WrapperTextFooterDate>
-                                    <Text
-                                        text={'valor:'}
-                                        fontFamily={'Poppins-Medium'}
-                                        color={theme.colors.gray_150}
-                                        size={14}
-                                        letterHeight={26}
-                                        weight="400"
-                                        align="left"
-                                    />
-                                    <Text
-                                        text={'data criação'}
-                                        fontFamily={'Poppins-Medium'}
-                                        color={theme.colors.gray_150}
-                                        size={14}
-                                        letterHeight={26}
-                                        weight="400"
-                                        align="left"
-                                    />
-                                </WrapperTextFooterDate>
                             </WrapperText>
+                            {/* <WrapperTextFooterDate>
 
+                            </WrapperTextFooterDate> */}
+
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    width: '100%',
+                                    marginTop: 14,
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    paddingLeft: 14,
+                                    paddingRight: 30,
+                                }}>
+                                <TextNatives
+                                    style={{
+                                        color: theme.colors.gray_150,
+                                        fontSize: 16,
+                                        fontFamily:
+                                            theme.fonts
+                                                .primary_poppins_medium_500,
+                                    }}>
+                                    valor:
+                                </TextNatives>
+                                <TextNatives
+                                    style={{
+                                        color: theme.colors.gray_150,
+                                        fontSize: 16,
+                                        fontFamily:
+                                            theme.fonts
+                                                .primary_poppins_medium_500,
+                                    }}>
+                                    data criação:
+                                </TextNatives>
+                            </View>
                             <WrapperValueAndDate>
                                 <TextNativeValueAndDate
                                     color={theme.colors.gray_50}>

@@ -4,6 +4,10 @@ export interface RootStackParamList {
     Sign: undefined;
     HomeStack: undefined;
     HomeBottomTabs: undefined;
+
+    AppRoutesAuth: undefined;
+    RegisterUser: undefined;
+    RecoverPassword: undefined;
 }
 
 declare global {

@@ -5,8 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Sign } from '@screens/sign';
 
 //bottom Tabs
-import { BottomTabsAuth } from './index.bottomTabs';
 import { Login } from '@screens/login';
+import { RecoverPassword } from '@screens/recover-password';
+import { RegisterUser } from '@screens/register-user';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,8 @@ function AppRoutesOpen() {
                 component={Sign}
             />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="RegisterUser" component={RegisterUser} />
+            <Stack.Screen name="RecoverPassword" component={RecoverPassword} />
         </Stack.Navigator>
     );
 }

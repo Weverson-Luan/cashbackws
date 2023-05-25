@@ -41,7 +41,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
         if (testing) {
             return onPressNavigationTesting();
         }
-        return navigate('Login');
+        return navigate('RegisterUser');
     };
 
     return (
@@ -86,7 +86,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                         testID="app-button-google"
                         activeOpacity={0.8}
                         onPress={() => {
-                            handleLogin();
+                            navigate('Login');
                         }}
                         width={300}
                         height={55}

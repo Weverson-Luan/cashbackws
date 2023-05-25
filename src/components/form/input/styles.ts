@@ -42,16 +42,26 @@ const BoxStyles = styled(TextInput) <InputProps>`
   ${shadow}
   ${backgroundColor}
   ${fontSize}
+
 `;
 
-const ButtonIcon = styled.TouchableOpacity`
+
+interface ButtonProps{
+    borderHeight?: boolean;
+}
+const ButtonIcon = styled.TouchableOpacity<ButtonProps>`
+  width: 55px;
 
   position: absolute;
   top: 18px;
   left: 6px;
-  border-right-width: 1px;
+  align-items: center;
+  justify-content: center;
+  border-right-width: ${({ borderHeight })=> borderHeight ? `${1}px` : 0};
   border-color: #cdcd;
   padding-right: 6px;
+
+
 
 `;
 

@@ -17,7 +17,10 @@ import { SpendingCard } from '@components/spending-card';
 import { Text } from '@components/text';
 
 // services / storage
-import { getDataStore } from 'src/services/storage/async-storage';
+import {
+    getDataStore,
+    removeDataStore,
+} from 'src/services/storage/async-storage';
 
 // assets
 import LogoutSvg from '../../assets/icons-svg/power.svg';
@@ -27,6 +30,8 @@ import { handleReturnMonthOfYear } from 'src/utils/return-month-of-year';
 
 // typings
 import { ICardTypeProps, IHomeStackProps } from './index.d';
+
+import { useAuth } from '../../hooks/use-hook';
 
 // styles
 import {
@@ -38,9 +43,14 @@ import {
     FlatList,
 } from './styles';
 
-const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
+const HomeStack = ({
+    onPressNavigationTesting = () => {},
+    testing,
+}: IHomeStackProps) => {
     const navigation = useNavigation();
     const theme = useTheme();
+    const { user, signOut } = useAuth();
+
     const [dataAccounts, setDataAccounts] = useState<any[]>([]);
     const [temp, setTemp] = useState<ICardTypeProps[]>([]);
     const [loading, setLoading] = useState(false);
@@ -66,12 +76,12 @@ const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
         },
     ] as ICardTypeProps[];
 
-    const handleLogout = useCallback(() => {
+    const handleLogout = useCallback(async () => {
         if (testing) {
             onPressNavigationTesting();
             navigation.navigate('Sign');
         } else {
-            navigation.navigate('Sign');
+            await signOut();
         }
     }, []);
 
@@ -196,8 +206,8 @@ const HomeStack = ({ onPressNavigationTesting, testing }: IHomeStackProps) => {
             <Header>
                 <Profile
                     testID="card-profile"
-                    file_url="https://lh3.googleusercontent.com/a/AEdFTp4wEuBiuNUcieS-oL_C80vIwXMi6sUUrywskRG-=s288-p-rw-no"
-                    name="Weverson"
+                    file_url="https://img2.gratispng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg"
+                    name={user.name!}
                 />
                 <WrapperIcon
                     testID="button-logout"

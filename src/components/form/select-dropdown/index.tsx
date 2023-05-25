@@ -37,10 +37,10 @@ const DropdownSelect = ({
                             textPlaceholder ? textPlaceholder : 'Sem informação'
                         }
                         buttonTextAfterSelection={(selectedItem, _index) => {
-                            return selectedItem.title;
+                            return selectedItem.name;
                         }}
                         rowTextForSelection={(item, _index) => {
-                            return item.title;
+                            return item.name;
                         }}
                         buttonStyle={
                             borderBottomStyle

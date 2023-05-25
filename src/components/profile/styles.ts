@@ -25,7 +25,7 @@ const Image = styled.Image`
 `;
 
 const WrapperNameUser = styled.View`
-    margin-left: ${RFValue(4)}px;
+    margin-left: ${RFValue(8)}px;
 `;
 /**
  * EXPORT

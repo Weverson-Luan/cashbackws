@@ -10,6 +10,8 @@ import {
     Envelope,
     Clock,
     LockKey,
+    User,
+    Cardholder,
 } from 'phosphor-react-native';
 // components
 import { Text } from '@components/text';
@@ -24,11 +26,12 @@ import { InputProps } from './interface';
 import { Box } from '@components/box';
 
 interface IInputProps extends InputProps {
-    nameIcon?: string;
+    nameIcon?: 'name' | 'money' | 'email' | 'password' | 'user' | 'card';
     label?: string;
+    borderHeight?: boolean;
 }
 
-const Input = ({ nameIcon, label, ...props }: IInputProps) => {
+const Input = ({ nameIcon, label, borderHeight, ...props }: IInputProps) => {
     const styleProps: InputProps = props;
     const theme = useTheme();
     return (
@@ -42,7 +45,7 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                     letterHeight={24}
                     align={'left'}
                     weight="500"
-                    marginLeft={-4}
+                    marginLeft={4}
                     marginBottom={2}
                 />
             )}
@@ -50,7 +53,7 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                 <>
                     <BoxStyles {...styleProps} />
                     {nameIcon === 'name' && (
-                        <ButtonIcon>
+                        <ButtonIcon borderHeight={borderHeight}>
                             <NotePencil
                                 size={26}
                                 color={theme.colors.gray_80}
@@ -59,7 +62,7 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                     )}
 
                     {nameIcon === 'money' && (
-                        <ButtonIcon>
+                        <ButtonIcon borderHeight={borderHeight}>
                             <CurrencyDollar
                                 size={26}
                                 color={theme.colors.gray_80}
@@ -68,14 +71,29 @@ const Input = ({ nameIcon, label, ...props }: IInputProps) => {
                     )}
 
                     {nameIcon === 'email' && (
-                        <ButtonIcon>
+                        <ButtonIcon borderHeight={borderHeight}>
                             <Envelope size={26} color={theme.colors.gray_80} />
                         </ButtonIcon>
                     )}
 
                     {nameIcon === 'password' && (
-                        <ButtonIcon>
+                        <ButtonIcon borderHeight={borderHeight}>
                             <LockKey size={26} color={theme.colors.gray_80} />
+                        </ButtonIcon>
+                    )}
+
+                    {nameIcon === 'user' && (
+                        <ButtonIcon borderHeight={borderHeight}>
+                            <User size={26} color={theme.colors.gray_80} />
+                        </ButtonIcon>
+                    )}
+
+                    {nameIcon === 'card' && (
+                        <ButtonIcon borderHeight={borderHeight}>
+                            <Cardholder
+                                size={26}
+                                color={theme.colors.gray_80}
+                            />
                         </ButtonIcon>
                     )}
                 </>

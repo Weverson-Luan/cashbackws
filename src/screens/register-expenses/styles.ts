@@ -3,11 +3,11 @@
  */
 import styled from 'styled-components/native';
 
-const Container = styled.View`
+const Container = styled.ScrollView`
   width: 100%;
   flex: 1;
-  align-items: center;
-  
+
+
 `;
 
 /**

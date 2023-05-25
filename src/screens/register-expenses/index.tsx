@@ -47,6 +47,7 @@ const RegisterExpenses = () => {
     const theme = useTheme();
     const navigation = useNavigation();
 
+    const [categoriesOptions, setCategories] = useState(categories as []);
     const [selectType, setSelectType] = useState<Props>();
     const [selectedItemCategory, setSelectedItemCategory] = useState<string>();
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -57,17 +58,6 @@ const RegisterExpenses = () => {
         useState<boolean>(false);
 
     const [dataAccounts, setDataAccounts] = useState<any[]>([]);
-
-    const dataOptions = [
-        { id: '5', title: 'Alimentação', value: '' },
-        { id: '9', title: 'Compras', value: '' },
-        { id: '4', title: 'Salário', value: '' },
-        { id: '6', title: 'Lazer', value: '' },
-        { id: '8', title: 'Free Lancer', value: '' },
-        { id: '3', title: 'Retirada', value: '' },
-        { id: '1', title: 'Empréstimo 10% - Saia do aperto', value: '' },
-        { id: '2', title: 'Empréstimo 15% - Saia do sufoco', value: '' },
-    ] as DataOptions[];
 
     const handleSelectItem = (nameTypeSelected: string) => {
         if (
@@ -112,17 +102,28 @@ const RegisterExpenses = () => {
         if (selectType?.type === validateType) {
             storeData('@accounts', JSON.stringify(tranformData));
 
+            setSelectType({ type: 'undefined' });
+            setSelectedItemCategory('');
+            setCategories(categories => categories);
+
             setTimeout(() => {
                 setLoading(false);
-                setSelectType({ type: 'undefined' });
-                setSelectedItemCategory('');
                 navigation.navigate('HomeBottomTabs');
             }, 2000);
         } else {
-            Alert.alert(
-                'Aviso',
-                'Você selecionou o tipo inválido por favor corriga ENTRADA OU SAIDA',
-            );
+            console.log('kk', selectType?.type, validateType);
+
+            if (validateType === false) {
+                Alert.alert(
+                    'Aviso',
+                    'Você não selecionou uma categoria, por favor para continuar selecione pelo menos uma!',
+                );
+            } else {
+                Alert.alert(
+                    'Aviso',
+                    'Você selecionou o tipo inválido por favor corriga ENTRADA OU SAIDA',
+                );
+            }
             setLoading(false);
         }
     };
@@ -149,7 +150,7 @@ const RegisterExpenses = () => {
                 initialValues={initialValue}
                 onSubmit={(values, { resetForm }) => {
                     handleRegisterNewItem(values.name, values.value);
-                    loading && resetForm();
+                    resetForm();
                 }}
                 validationSchema={schemaRegister}>
                 {({
@@ -170,9 +171,12 @@ const RegisterExpenses = () => {
                                         nameIcon={'name'}
                                         width={'100%'}
                                         height={64}
+                                        borderHeight={true}
                                         border={1}
                                         borderColor={
-                                            inputIsFocused ? 'green' : 'gray_80'
+                                            inputIsFocused
+                                                ? 'blue_cyan_200'
+                                                : 'neutral_100'
                                         }
                                         borderRadius={'six'}
                                         fontSize={18}
@@ -188,7 +192,7 @@ const RegisterExpenses = () => {
                                         }}
                                         value={values.name}
                                         backgroundColor={'neutral_25'}
-                                        pl={36}
+                                        pl={72}
                                         color={'gray_90'}
                                     />
                                     {errors.name && (
@@ -200,7 +204,7 @@ const RegisterExpenses = () => {
                                             letterHeight={24}
                                             align="left"
                                             width={100}
-                                            marginLeft={-2}
+                                            marginLeft={2}
                                             marginTop={2}
                                         />
                                     )}
@@ -212,13 +216,14 @@ const RegisterExpenses = () => {
                                     <Input
                                         label="Valor"
                                         nameIcon={'money'}
+                                        borderHeight={true}
                                         width={'100%'}
                                         height={64}
                                         border={1}
                                         borderColor={
                                             inputValueIsFocused
-                                                ? 'green'
-                                                : 'gray_80'
+                                                ? 'blue_cyan_200'
+                                                : 'neutral_100'
                                         }
                                         borderRadius={'six'}
                                         fontSize={18}
@@ -237,7 +242,7 @@ const RegisterExpenses = () => {
                                         value={values.value}
                                         keyboardType={'number-pad'}
                                         backgroundColor={'neutral_25'}
-                                        pl={36}
+                                        pl={72}
                                         color={'gray_90'}
                                     />
                                     {errors.value && (
@@ -249,7 +254,7 @@ const RegisterExpenses = () => {
                                             letterHeight={24}
                                             align="left"
                                             width={100}
-                                            marginLeft={-2}
+                                            marginLeft={2}
                                             marginTop={2}
                                         />
                                     )}
@@ -342,21 +347,21 @@ const RegisterExpenses = () => {
 
                             {errors.name || errors.value ? null : (
                                 <DropdownSelect
-                                    dataSelected={dataOptions}
+                                    dataSelected={categoriesOptions as []}
                                     borderBottomStyle={false}
                                     textPlaceholder="Escolha uma categoria"
                                     dropdownIconPosition="right"
                                     handleOnSelect={(selectedItem, _index) => {
-                                        handleSelectItem(selectedItem.title);
+                                        handleSelectItem(selectedItem.name);
                                         setSelectedItemCategory(
-                                            selectedItem.title,
+                                            selectedItem.name,
                                         );
                                     }}
                                 />
                             )}
                         </Container>
 
-                        {isVisible && (
+                        {/* {isVisible && (
                             <>
                                 {inputIsFocused ||
                                 inputValueIsFocused === true ? null : (
@@ -482,11 +487,11 @@ const RegisterExpenses = () => {
                                     </Box>
                                 )}
                             </>
-                        )}
+                        )} */}
 
                         <Box pl={4} pr={4}>
                             <Button
-                                testID="app-button-google"
+                                testID="app-button-register"
                                 activeOpacity={0.8}
                                 onPress={() => {
                                     handleSubmit();

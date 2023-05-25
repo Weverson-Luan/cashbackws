@@ -13,7 +13,6 @@ import {
   PositionProps,
   ShadowProps,
   SizeProps,
-  SpaceProps,
   WidthProps,
 } from 'styled-system';
 import theme from 'src/global/styles/theme/theme';

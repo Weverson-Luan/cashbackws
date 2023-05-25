@@ -4,7 +4,7 @@
 
 interface DataOptions {
   id: string;
-  title: string;
+  name: string;
   value: string;
 }
 

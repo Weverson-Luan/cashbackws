@@ -16,15 +16,16 @@ import { Container, Title, TextValue } from './styles';
 
 interface ICardProps {
     title: string;
-    value: string | number;
+    amount: string | number;
     color: string;
 }
-const CardHistory = ({ title, value, color }: ICardProps) => {
+const CardHistory = ({ title, amount, color }: ICardProps) => {
+    console.log(amount);
     return (
         <Container color={color}>
             <Title>{title}</Title>
 
-            <TextValue>{value}</TextValue>
+            <TextValue>{amount}</TextValue>
         </Container>
     );
 };

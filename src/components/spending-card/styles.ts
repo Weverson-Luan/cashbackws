@@ -24,6 +24,7 @@ const Header = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding-left: 8px;
 `;
 
 const FlatList = styled.FlatList``;
@@ -86,10 +87,12 @@ const ImageProfile = styled.Image`
 `;
 
 const WrapperTextFooterDate = styled.View`
-    width: 60%;
+    width: 58%;
+    /* background-color: red; */
     flex-direction: row;
     margin-top: ${RFValue(12)}px;
     padding-right: ${RFValue(24)}px;
+    margin-left: 8px;
 `;
 
 interface IpropsColor{
@@ -135,9 +138,12 @@ const TextNativeValueAndDate = styled.Text<IpropsColor>`
 const WrapperValueAndDate = styled.View`
     width: 100%;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     padding-left: ${RFValue(12)}px;
     padding-right: ${RFValue(12)}px;
+    /* background-color: red; */
+
 `;
 
 

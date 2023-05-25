@@ -20,7 +20,7 @@ describe('it should be possible to test the text component', () => {
             <Text
                 testID="text-main"
                 text="I am Title"
-                fontFamily="Raleway-Bold"
+                fontFamily="Poppins-Bold"
                 color={theme.colors.black_800}
                 size={1}
                 align="center"

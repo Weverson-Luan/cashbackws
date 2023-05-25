@@ -12,35 +12,57 @@ import { Text } from '@components/text';
 import { Button } from '@components/form/button';
 import { Header } from '@components/header';
 
-// assets
-import LogoAppSvg from 'src/assets/icons-svg/logo-app.svg';
-import GoogleSvg from 'src/assets/icons-svg/google.svg';
-import GithubSvg from 'src/assets/icons-svg/github.svg';
+import { Box } from '@components/box';
+import { Input } from '@components/form/input';
+import { useAuth } from '../../hooks/use-hook';
 
 // typings
 
 // styles
-import {
-    Container,
-    WrapperLogo,
-    WrapperTitle,
-    WrapperDescription,
-    WrapperFooter,
-    WrapperButton,
-    WrapperAppVersion,
-} from './styles';
-import { Box } from '@components/box';
-import { Input } from '@components/form/input';
+import { Container } from './styles';
+import { Alert } from 'react-native';
 
 const Login = () => {
     const theme = useTheme();
     const { navigate } = useNavigation();
+    const { user, signIn } = useAuth();
+
+    const [inputValueIsFocusedName, setInputValueIsFocusedName] =
+        useState<boolean>(false);
 
     const [inputValueIsFocused, setInputValueIsFocused] =
         useState<boolean>(false);
 
     const [inputValueIsFocusedPassword, setInputValueIsFocusedPassword] =
         useState<boolean>(false);
+
+    const [email, setEmail] = useState('');
+
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+
+    const handleLoginUserEmailAndPassword = async () => {
+        if (email && password && name) {
+            await signIn(email, password, name);
+        } else {
+            Alert.alert(
+                'Alerta',
+                'Você não informou um dos campos abaixo por favor confira e tente novamente.',
+            );
+            console.log('email', email);
+            if (!email) {
+                setInputValueIsFocused(true);
+            }
+
+            if (!password) {
+                setInputValueIsFocusedPassword(true);
+            }
+
+            if (!name) {
+                setInputValueIsFocusedName(true);
+            }
+        }
+    };
 
     return (
         <>
@@ -76,9 +98,36 @@ const Login = () => {
                     />
                 </Box>
 
+                <Box width={'100%'} pr={28} mb={3}>
+                    <Input
+                        nameIcon={'user'}
+                        borderHeight={true}
+                        width={'100%'}
+                        height={64}
+                        border={1}
+                        borderColor={
+                            inputValueIsFocusedName
+                                ? 'blue_cyan_200'
+                                : 'neutral_100'
+                        }
+                        borderRadius={'six'}
+                        fontSize={18}
+                        placeholder={`Como deseja ser chamado?`}
+                        placeholderTextColor={theme.colors.gray_80}
+                        onBlur={() => setInputValueIsFocusedName(false)}
+                        onChangeText={nameText => setName(nameText)}
+                        onFocus={() => setInputValueIsFocusedName(true)}
+                        keyboardType={'default'}
+                        backgroundColor={'neutral_25'}
+                        pl={72}
+                        color={'gray_90'}
+                    />
+                </Box>
+
                 <Box width={'100%'} pr={28}>
                     <Input
                         nameIcon={'email'}
+                        borderHeight={true}
                         width={'100%'}
                         height={64}
                         border={1}
@@ -92,18 +141,19 @@ const Login = () => {
                         placeholder={`E-mail`}
                         placeholderTextColor={theme.colors.gray_80}
                         onBlur={() => setInputValueIsFocused(false)}
-                        onChangeText={() => {}}
+                        onChangeText={emailText => setEmail(emailText)}
                         onFocus={() => setInputValueIsFocused(true)}
                         keyboardType={'default'}
                         backgroundColor={'neutral_25'}
-                        pl={48}
+                        pl={72}
                         color={'gray_90'}
                     />
                 </Box>
 
-                <Box width={'100%'} height={170} mt={3}>
+                <Box width={'100%'} height={140} mt={3} pr={28}>
                     <Input
                         nameIcon={'password'}
+                        borderHeight={true}
                         width={'100%'}
                         height={64}
                         border={1}
@@ -117,11 +167,11 @@ const Login = () => {
                         placeholder={`Senha`}
                         placeholderTextColor={theme.colors.gray_80}
                         onBlur={() => setInputValueIsFocusedPassword(false)}
-                        onChangeText={() => {}}
+                        onChangeText={passwordText => setPassword(passwordText)}
                         onFocus={() => setInputValueIsFocusedPassword(true)}
                         keyboardType={'default'}
                         backgroundColor={'neutral_25'}
-                        pl={48}
+                        pl={72}
                         color={'gray_90'}
                     />
                 </Box>
@@ -131,7 +181,7 @@ const Login = () => {
                         <Button
                             testID="app-button-google"
                             activeOpacity={0.8}
-                            onPress={() => {}}
+                            onPress={() => handleLoginUserEmailAndPassword()}
                             width={300}
                             height={55}
                             background_color={theme.colors.blue_cyan_200}
@@ -153,7 +203,7 @@ const Login = () => {
                         <Button
                             testID="app-button-google"
                             activeOpacity={0.8}
-                            onPress={() => {}}
+                            onPress={() => navigate('RegisterUser')}
                             width={300}
                             height={55}
                             background_color={theme.colors.neutral_25}
