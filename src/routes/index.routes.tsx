@@ -9,11 +9,7 @@ import { useAuth } from '../hooks/use-hook';
 
 function AppRoutes() {
     const { user } = useAuth();
-    console.log('**', user);
 
-    useEffect(() => {
-        console.log('**', user);
-    }, []);
     return (
         <NavigationContainer>
             {user.isLoggedIn ? <AppRoutesAuth /> : <AppRoutesOpen />}

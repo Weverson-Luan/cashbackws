@@ -10,7 +10,6 @@ const Container = styled.View`
     align-items: center;
     justify-content: center;
     padding: ${RFValue(6)}px;
-    margin-bottom: ${RFValue(36)}px;
 `;
 
 const WrapperLoading = styled.View.attrs({
@@ -86,15 +85,6 @@ const ImageProfile = styled.Image`
     height:58px;
 `;
 
-const WrapperTextFooterDate = styled.View`
-    width: 58%;
-    /* background-color: red; */
-    flex-direction: row;
-    margin-top: ${RFValue(12)}px;
-    padding-right: ${RFValue(24)}px;
-    margin-left: 8px;
-`;
-
 interface IpropsColor{
     color: string;
 }
@@ -158,7 +148,6 @@ export {
     ContainerSpending,
     HeaderSpending,
     WrapperText,
-    WrapperTextFooterDate,
     TextNative,
     WrapperImageProfile,
     ImageProfile,

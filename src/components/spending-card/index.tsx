@@ -25,7 +25,6 @@ import {
     ContainerSpending,
     HeaderSpending,
     WrapperText,
-    WrapperTextFooterDate,
     FlatList,
     TextNative,
     WrapperImageProfile,
@@ -37,6 +36,7 @@ import {
 } from './styles';
 import { handleDateFormatting } from 'src/utils/formated-date';
 import { useAuth } from '@hooks/use-hook';
+import { IMAGE_DEFAULT } from 'src/commons/constants';
 
 const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
     const theme = useTheme();
@@ -100,7 +100,9 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                 <WrapperImageProfile>
                                     <ImageProfile
                                         source={{
-                                            uri: 'https://img2.gratispng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg',
+                                            uri: user.avatar
+                                                ? user.avatar
+                                                : IMAGE_DEFAULT,
                                         }}
                                     />
                                     <View>
@@ -163,9 +165,6 @@ const SpendingCard = ({ testID, data, ...res }: ISpendingProps) => {
                                     </View>
                                 </WrapperImageProfile>
                             </WrapperText>
-                            {/* <WrapperTextFooterDate>
-
-                            </WrapperTextFooterDate> */}
 
                             <View
                                 style={{

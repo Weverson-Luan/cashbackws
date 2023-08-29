@@ -18,7 +18,8 @@ const Header = styled.View`
     flex-direction: row;
     justify-content: space-between;
     background-color: ${({ theme }) => theme.colors.blue_cyan_200};
-    padding: ${RFValue(16)}px;
+    padding-top: ${RFValue(16)}px;
+    /* padding-left: ${RFValue(22)}px; */
 `;
 const WrapperIcon = styled.TouchableOpacity`
     width: ${RFValue(50)}px;

@@ -54,7 +54,7 @@ const Profile = ({ file_url, name, testID, ...res }: IProfileProps) => {
                     letterHeight={22}
                     weight="600"
                     align="left"
-                    width={160}
+                    width={200}
                 />
             </WrapperNameUser>
         </Container>

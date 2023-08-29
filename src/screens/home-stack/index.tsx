@@ -2,13 +2,18 @@
  * IMPORT
  */
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import {
+    ActivityIndicator,
+    View,
+    Alert,
+    PermissionsAndroid,
+} from 'react-native';
 import { useTheme } from 'styled-components';
-
-import { format, max, getMonth, addMonths } from 'date-fns';
 
 // libs
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { format, max, getMonth, addMonths } from 'date-fns';
+import { launchImageLibrary } from 'react-native-image-picker';
 
 // components
 import { CardType } from '@components/card-type';
@@ -20,6 +25,7 @@ import { Text } from '@components/text';
 import {
     getDataStore,
     removeDataStore,
+    storeData,
 } from 'src/services/storage/async-storage';
 
 // assets
@@ -42,6 +48,7 @@ import {
     WrapperContentType,
     FlatList,
 } from './styles';
+import { IMAGE_DEFAULT } from 'src/commons/constants';
 
 const HomeStack = ({
     onPressNavigationTesting = () => {},
@@ -49,7 +56,7 @@ const HomeStack = ({
 }: IHomeStackProps) => {
     const navigation = useNavigation();
     const theme = useTheme();
-    const { user, signOut } = useAuth();
+    const { user, signOut, handleGetUser } = useAuth();
 
     const [dataAccounts, setDataAccounts] = useState<any[]>([]);
     const [temp, setTemp] = useState<ICardTypeProps[]>([]);
@@ -81,7 +88,25 @@ const HomeStack = ({
             onPressNavigationTesting();
             navigation.navigate('Sign');
         } else {
-            await signOut();
+            Alert.alert(
+                'Sair do App',
+                'Você quer sair do aplicativo ou deseja excluir sua conta ?',
+                [
+                    {
+                        text: 'Sair',
+                        onPress: async () => {
+                            await signOut(true);
+                        },
+                        style: 'cancel',
+                    },
+                    {
+                        text: 'Excluir',
+                        onPress: async () => {
+                            await signOut(false);
+                        },
+                    },
+                ],
+            );
         }
     }, []);
 
@@ -194,8 +219,54 @@ const HomeStack = ({
          */
     };
 
+    const pickImage = async () => {
+        await launchImageLibrary(
+            { mediaType: 'photo', quality: 1, selectionLimit: 1 },
+            async (response: any) => {
+                if (!response.didCancel) {
+                    const uri = response?.assets[0]?.uri;
+                    setLoading(true);
+                    const userSaveInStorage = await getDataStore('@user');
+
+                    const user = {
+                        ...(userSaveInStorage
+                            ? JSON.parse(userSaveInStorage)
+                            : null),
+                        avatar: uri,
+                    } as any;
+                    storeData('@user', JSON.stringify(user));
+                    await handleGetUser();
+                    setLoading(false);
+                }
+            },
+        );
+    };
+    const requestCameraPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: 'Cool Photo App Camera Permission',
+                    message:
+                        'Cool Photo App needs access to your camera ' +
+                        'so you can take awesome pictures.',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log('You can use the camera');
+            } else {
+                console.log('Camera permission denied');
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    };
     useFocusEffect(
         useCallback(() => {
+            requestCameraPermission();
             handleAllData();
             handleTransactions();
         }, [dataAccounts.length]),
@@ -205,8 +276,11 @@ const HomeStack = ({
         <Container>
             <Header>
                 <Profile
+                    onPress={() => {
+                        pickImage();
+                    }}
                     testID="card-profile"
-                    file_url="https://img2.gratispng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg"
+                    file_url={user.avatar ? user.avatar : IMAGE_DEFAULT}
                     name={user.name!}
                 />
                 <WrapperIcon

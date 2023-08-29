@@ -16,6 +16,7 @@ type DropdownSelectProps = {
   handleOnSelect: (selectedItem: DataOptions, index: number) => void;
   handleOnTextAfterSelect?: (selectedItem, index: number) => any;
   handleOnTextForSelect?: (selectedItem, index: number) => any
+  handleOnTest?: (selectedItem, index) => any
 }
 
 

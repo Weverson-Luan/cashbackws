@@ -5,12 +5,12 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 const Container = styled.TouchableOpacity`
-    width: ${RFValue(170)}px;
     height: ${RFValue(60)}px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top: ${RFValue(16)}px;
+    padding-left: ${RFValue(16)}px;
 `;
 
 const WrapperImage = styled.View`

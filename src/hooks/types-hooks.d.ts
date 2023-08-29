@@ -5,6 +5,7 @@
 type IUserProps = {
     user: {
         name?: string;
+        avatar?: string;
         email: string;
         password: string;
         isLoggedIn: boolean;
@@ -12,7 +13,9 @@ type IUserProps = {
         token?: string;
     };
     signIn: (email: string, password: string | number, name: string) => Promise<void>;
-    signOut: () => Promise<void>;
+    signOut: (logout: boolean) => Promise<void>;
+    handleGetUser: () => Promise<void>;
+
 };
 
 /**

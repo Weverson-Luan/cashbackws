@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { IUserProviderProps, IAuthContextData, IAuthProviderProps } from '.';
-import axios from 'axios';
 import {
     getDataStore,
     removeDataStore,
@@ -20,34 +19,54 @@ const UserProvider = ({ children }: IAuthProviderProps) => {
         name: string,
     ) => {
         try {
-            const response = await axios.post('https://reqres.in/api/login', {
-                email: 'eve.holt@reqres.in',
-                password: 'cityslicka',
-            });
+            const userSaveInStorage = await getDataStore('@user');
 
-            const user = {
-                name,
-                email,
-                password,
-                isLoggedIn: true,
-            } as any;
-            storeData('user', JSON.stringify(user));
-            setUser(user);
+            if (userSaveInStorage != null) {
+                const user = {
+                    ...(userSaveInStorage
+                        ? JSON.parse(userSaveInStorage)
+                        : null),
+                    isLoggedIn: true,
+                } as any;
 
-            console.log('result', response.data);
+                storeData('@user', JSON.stringify(user));
+                handleGetUser();
+            } else {
+                const user = {
+                    name,
+                    email,
+                    isLoggedIn: true,
+                    password,
+                } as any;
+                storeData('@user', JSON.stringify(user));
+                setUser(user);
+            }
         } catch (error) {
             console.log('error');
         }
     };
 
-    const signOut = async () => {
+    const signOut = async (logout: boolean) => {
         try {
-            await removeDataStore('user');
-            setUser({
-                email: '',
-                isLoggedIn: false,
-                password: '',
-            });
+            if (logout) {
+                const { name, password } = user;
+                setUser({
+                    name,
+                    password,
+                    isLoggedIn: false,
+                });
+            } else {
+                await removeDataStore('@user');
+                await removeDataStore('@accounts');
+                setUser({
+                    email: '',
+                    isLoggedIn: false,
+                    password: '',
+                    access_token: '',
+                    name: '',
+                    token: '',
+                });
+            }
         } catch (error) {
             //tratamento de errror
             console.log(error);
@@ -55,7 +74,7 @@ const UserProvider = ({ children }: IAuthProviderProps) => {
     };
 
     const handleGetUser = async () => {
-        const user = await getDataStore('user');
+        const user = await getDataStore('@user');
 
         if (user != undefined) {
             const formatedUser = JSON.parse(user);
@@ -68,7 +87,7 @@ const UserProvider = ({ children }: IAuthProviderProps) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ user, signIn, signOut }}>
+        <UserContext.Provider value={{ user, signIn, signOut, handleGetUser }}>
             {children}
         </UserContext.Provider>
     );
