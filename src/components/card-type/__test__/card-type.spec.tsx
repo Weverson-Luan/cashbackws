@@ -94,7 +94,7 @@ describe('Component card type', () => {
         expect(elementCardTypeBackgroundColor).toBeTruthy();
         expect(
             elementCardTypeBackgroundColor.props.style.backgroundColor,
-        ).toEqual(theme.colors.purple_300);
+        ).toEqual(theme.colors.neutral_25);
     });
 
     it('it must be possible for the input and output cards to have a background color with hex decimal #FFFFFF', () => {

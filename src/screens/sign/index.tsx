@@ -30,17 +30,13 @@ import {
 } from './styles';
 
 interface IProps {
-    onPressNavigationTesting: () => void; // function for testing
     testing?: boolean;
 }
-const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
+const Sign = () => {
     const theme = useTheme();
     const { navigate } = useNavigation();
 
     const handleLogin = () => {
-        if (testing) {
-            return onPressNavigationTesting();
-        }
         return navigate('RegisterUser');
     };
 
@@ -83,7 +79,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
             <WrapperFooter>
                 <WrapperButton>
                     <Button
-                        testID="app-button-google"
+                        testID="app-button-login"
                         activeOpacity={0.8}
                         onPress={() => {
                             navigate('Login');
@@ -107,7 +103,7 @@ const Sign = ({ onPressNavigationTesting, testing }: IProps) => {
                     </Button>
 
                     <Button
-                        testID="app-button-github"
+                        testID="app-button-cadastre-se"
                         activeOpacity={0.8}
                         onPress={handleLogin}
                         width={300}

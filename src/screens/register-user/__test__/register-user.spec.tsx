@@ -72,4 +72,28 @@ describe('Screen Sign', () => {
 
         expect(elementButtonGithub).toBeTruthy();
     });
+
+    it('it should be possible to call navigation function when click on enter with google button', () => {
+        const onPressNavigationTestingMock = jest.fn();
+
+        const { getByText } = render(<Sign />, {
+            wrapper: Providers,
+        });
+
+        const elementButtonGoogle = getByText('Fazer Login');
+
+        fireEvent.press(elementButtonGoogle);
+    });
+
+    it('it should be possible to call navigation function when click on enter with github button', () => {
+        const onPressNavigationTestingMock = jest.fn();
+
+        const { getByText } = render(<Sign />, {
+            wrapper: Providers,
+        });
+
+        const elementButtonGithub = getByText('Cadastre-se');
+
+        fireEvent.press(elementButtonGithub);
+    });
 });

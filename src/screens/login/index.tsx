@@ -28,8 +28,8 @@ const Login = () => {
     const { navigate } = useNavigation();
     const { user, signIn } = useAuth();
 
-    const nameSalvo = user.name;
-    console.log('ola mundo', user);
+    const nameSalvo = user?.name;
+
     const [inputValueIsFocusedName, setInputValueIsFocusedName] =
         useState<boolean>(false);
 
@@ -50,9 +50,7 @@ const Login = () => {
             setLoading(true);
             const passwordSaved = user.password;
             const nameUserSaved = user.name;
-            // console.log(passwordSaved === password);
-            // console.log(nameUserSaved);
-            // console.log(name);
+
             if (passwordSaved || nameUserSaved?.trim()) {
                 if (passwordSaved === password && nameUserSaved === name) {
                     await signIn(emailText, password, name);
@@ -88,7 +86,6 @@ const Login = () => {
     };
 
     const handleReturnString = (emailVerify: string) => {
-        console.log('ola emailVerify', emailVerify);
         if (emailVerify) {
             return 'Digite seu usuário';
         } else {
